@@ -1,0 +1,24 @@
+{
+  "author": {
+    "name": "chmdebeer@gmail.com"
+  },
+  "description": "Signal K interface for Reflections",
+  "keywords": [
+    "signalk-node-server-plugin",
+    "signalk-webapp"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "signalk-reflections",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "npx webpack --config node_modules/signalk-reflections/webpack.config.js"
+  },
+  "dependencies": {
+    "@signalk/client": "latest"
+  },
+  "devDependencies": {
+    "webpack": "latest",
+    "webpack-cli": "latest"
+  }
+}

@@ -1,0 +1,82 @@
+
+/** Styling the Button **/
+.momentary {
+	text-shadow: 0px 1px 1px rgba(250,250,250,0.1);
+	font-size: 32pt;
+	display: block;
+	position: relative;
+	text-decoration: none;
+    box-shadow: 0px 3px 0px 0px rgb(34,34,34),
+    			0px 7px 10px 0px rgb(17,17,17),
+    			inset 0px 1px 1px 0px rgba(250, 250, 250, .2),
+    			inset 0px -12px 35px 0px rgba(0, 0, 0, .5);
+	width: 70px;
+	height: 70px;
+	border: 0;
+	color: rgb(37,37,37) !important;
+	border-radius: 35px;
+	text-align: center;
+	line-height: 79px;
+	background-color: rgb(83,87,93);
+
+	transition: color 350ms ease, text-shadow 350ms;
+		-o-transition: color 350ms ease, text-shadow 350ms;
+		-moz-transition: color 350ms ease, text-shadow 350ms;
+		-webkit-transition: color 350ms ease, text-shadow 350ms;
+}
+.momentary:before {
+	content: "";
+	width: 80px;
+	height: 80px;
+	display: block;
+	z-index: -2;
+	position: absolute;
+	background-color: rgb(26,27,29);
+	left: -5px;
+	top: -2px;
+	border-radius: 40px;
+	box-shadow: 0px 1px 0px 0px rgba(250,250,250,0.1),
+			 	inset 0px 1px 2px rgba(0, 0, 0, 0.5);
+}
+.momentary:active {
+    box-shadow: 0px 0px 0px 0px rgb(34,34,34),
+    			0px 3px 7px 0px rgb(17,17,17),
+    			inset 0px 1px 1px 0px rgba(250, 250, 250, .2),
+    			inset 0px -10px 35px 5px rgba(0, 0, 0, .5);
+    background-color: rgb(83,87,93);
+  	top: 3px;
+    color: #fff !important;
+  	text-shadow: 0px 0px 3px rgb(250,250,250);
+}
+.momentary.on {
+    box-shadow: 0px 0px 0px 0px rgb(34,34,34),
+    			0px 3px 7px 0px rgb(17,17,17),
+    			inset 0px 1px 1px 0px rgba(250, 250, 250, .2),
+    			inset 0px -10px 35px 5px rgba(0, 0, 0, .5);
+    background-color: rgb(83,87,93);
+  	top: 3px;
+    color: #fff !important;
+    	text-shadow: 0px 0px 3px rgb(250,250,250);
+}
+.momentary:active:before, a.on:before {
+	top: -3px;
+	background-color: rgb(26,27,29);
+	box-shadow: 0px 1px 0px 0px rgba(250,250,250,0.1),
+			 	inset 0px 1px 2px rgba(0, 0, 0, 0.5);
+}
+/* Styling the Indicator light */
+.momentary + span {
+	display: block;
+  padding: 15px 0px 0px 0px;
+	width: 75px;
+	/* height: 8px; */
+ 	clear: both;
+ 	/* position: absolute; */
+ 	bottom: 0;
+  text-align: center;
+  color: #ccc;
+}
+
+.fas {
+  line-height: 1.8;
+}
