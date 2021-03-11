@@ -16,6 +16,20 @@
 			<div class="slides">
         <section>
           <section data-background="img/dash.jpg">
+            <p>
+              <a href="javascript:void(0);" id="btnFullscreen">
+              <label>Click the button below to toggle between fullscreen mode and windowed mode for this page.</label>
+              </a>
+            </p>
+          </section>
+          <section data-background="img/dash.jpg">
+            <a href="/@signalk/freeboard-sk/" target="_blank">Freeboard</a>
+          </section>
+          <section data-background="black">
+          </section>
+        </section>
+        <section>
+          <section data-background="img/dash.jpg">
             <table id="batteries">
               <tbody>
               <tr>
@@ -99,6 +113,37 @@
           </section>
           <section data-background="img/dash.jpg">
             <table>
+              <tr>
+                <td colspan="3" align="center"><h3>Port</h3></td>
+              </tr>
+              <tr>
+                <td colspan="3" align="center"><canvas id="rpm-port-id" type="radialGuage" data-nmea2k="propulsion.port.revolutions"></canvas></td>
+              </tr>
+              <tr>
+                <td><canvas id="volt-port-id" type="radialGuage" data-nmea2k="electrical.batteries.0.voltage"></canvas></td>
+                <td><canvas id="oil-pressure-port-id" type="radialGuage" data-nmea2k="propulsion.port.oilPressure"></canvas></td>
+                <td><canvas id="water-temp-port-id" type="radialGuage" data-nmea2k="propulsion.port.oilPressure"></canvas></td>
+              </tr>
+            </table>
+          </section>
+          <section data-background="img/dash.jpg">
+            <table>
+              <tr>
+                <td colspan="3" align="center"><h3>Starboard</h3></td>
+              </tr>
+              <tr>
+                <td colspan="3" align="center"><canvas id="rpm-starboard-id" type="radialGuage" data-nmea2k="propulsion.starboard.revolutions"></canvas></td>
+              </tr>
+              <tr>
+                <td><canvas id="volt-starboard-id" type="radialGuage" data-nmea2k="electrical.batteries.1.voltage"></canvas></td>
+                <td><canvas id="oil-pressure-starboard-id" type="radialGuage" data-nmea2k="propulsion.starboard.temperature"></canvas></td>
+                <td><canvas id="water-temp-starboard-id" type="radialGuage" data-nmea2k="propulsion.starboard.temperature"></canvas></td>
+              </tr>
+            </table>
+          </section>
+
+          <section data-background="img/dash.jpg">
+            <table>
               <tbody>
               <tr>
                 <td colspan="2" align="center">
@@ -130,23 +175,6 @@
                 </td>
               </tr>
             </tbody>
-            </table>
-          </section>
-          <section data-background="img/dash.jpg">
-            <table>
-              <tr>
-                <td colspan="3" align="center"><canvas id="rpm-port-id" type="radialGuage" data-nmea2k="propulsion.port.revolutions"></canvas></td>
-                <td colspan="3" align="center"><canvas id="rpm-starboard-id" type="radialGuage" data-nmea2k="propulsion.starboard.revolutions"></canvas></td>
-              </tr>
-              <tr>
-                <td><canvas id="volt-port-id" type="radialGuage" data-nmea2k="electrical.batteries.0.voltage"></canvas></td>
-                <td><canvas id="oil-pressure-port-id" type="radialGuage" data-nmea2k="propulsion.port.oilPressure"></canvas></td>
-                <td><canvas id="water-temp-port-id" type="radialGuage" data-nmea2k="propulsion.port.oilPressure"></canvas></td>
-
-                <td><canvas id="volt-starboard-id" type="radialGuage" data-nmea2k="electrical.batteries.1.voltage"></canvas></td>
-                <td><canvas id="oil-pressure-starboard-id" type="radialGuage" data-nmea2k="propulsion.starboard.temperature"></canvas></td>
-                <td><canvas id="water-temp-starboard-id" type="radialGuage" data-nmea2k="propulsion.starboard.temperature"></canvas></td>
-              </tr>
             </table>
           </section>
         </section>
@@ -242,39 +270,39 @@
               <th colspan="2" align="center"><h2>Water</h2></th>
             </tr>
             <tr>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.2.state"></td>
               <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.3.state"></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.4.state"></td>
               <td>&nbsp;</th>
               <td><h3>Pressure</h3></td>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.4.state"></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.5.state"></td>
             </tr>
             <tr>
               <td><h3>Cabin Heater</h3></td>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.6.state"></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.7.state"></td>
               <td>&nbsp;</th>
               <td><h3>Heater</h3></td>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.5.state"></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.6.state"></td>
             </tr>
             <tr>
               <td>&nbsp;</td>
               <td>&nbsp;</td>
               <td>&nbsp;</th>
               <td><h3>Black water vent</h3></td>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.7.state"></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.8.state"></td>
             </tr>
             <tr>
               <td>&nbsp;</td>
               <td>&nbsp;</td>
               <td>&nbsp;</th>
               <td><h3>Macerator</h3></td>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.8.state"></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.9.state"></td>
             </tr>
             <tr>
               <td><h3>Door Lock</h3></td>
               <td><input type="checkbox" data-nmea2k="electrical.switches.bank.4.3.state"></td>
               <td>&nbsp;</th>
               <td><h3>Shower Drain</h3></td>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.9.state"></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.10.state"></td>
             </tr>
           </table>
         </section>
@@ -312,6 +340,40 @@
         "./js/joy.js",
         "./js/reflections.js"
       );
+    </script>
+    <script>
+
+      window.addEventListener("contextmenu", function(e) { e.preventDefault(); })
+
+      function toggleFullscreen(elem) {
+        elem = elem || document.documentElement;
+
+        if (!document.fullscreenElement && !document.mozFullScreenElement &&
+          !document.webkitFullscreenElement && !document.msFullscreenElement) {
+          if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+          } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+          } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen();
+          } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+          }
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+          } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          }
+        }
+      }
+      document.getElementById('btnFullscreen').addEventListener('click', function() {
+        toggleFullscreen();
+      });
     </script>
 	</body>
 </html>
