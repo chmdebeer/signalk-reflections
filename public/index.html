@@ -16,6 +16,11 @@
 			<div class="slides">
         <section>
           <section data-background="img/dash.jpg">
+            <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+          </section>
+          <section data-background="black">
+          </section>
+          <section data-background="img/dash.jpg">
             <p>
               <a href="javascript:void(0);" id="btnFullscreen">
               <label>Click the button below to toggle between fullscreen mode and windowed mode for this page.</label>
@@ -25,7 +30,72 @@
           <section data-background="img/dash.jpg">
             <a href="/@signalk/freeboard-sk/" target="_blank">Freeboard</a>
           </section>
-          <section data-background="black">
+        </section>
+        <section>
+          <section data-background="img/dash.jpg">
+            <table>
+              <tbody>
+              <tr>
+                <td align="center">
+                  <canvas id="latitude" width="120" height="50" type="lcdGuage" data-nmea2k="navigation.position" field-nmea2k="latitude"></canvas>
+                </td>
+                <td align="center">
+                  <canvas id="longitude" width="120" height="50" type="lcdGuage" data-nmea2k="navigation.position" field-nmea2k="longitude"></canvas>
+                </td>
+              </tr>
+              <tr>
+                <td align="center">
+                  <canvas id="heading" width="120" height="50" type="lcdGuage" data-nmea2k="navigation.courseOverGroundTrue"></canvas>
+                </td>
+                <td align="center">
+                  <canvas id="magneticVariation" width="120" height="50" type="lcdGuage" data-nmea2k="navigation.magneticVariation"></canvas>
+                </td>
+              </tr>
+              <tr>
+                <td align="center">
+                  <canvas id="speed" width="120" height="50" type="lcdGuage" data-nmea2k="navigation.speedOverGround"></canvas>
+                </td>
+                <td align="center">&nbsp;
+                </td>
+              </tr>
+              <tr>
+                <td align="center">
+                  <canvas id="pitch" width="120" height="50" type="lcdGuage" data-nmea2k="navigation.attitude" field-nmea2k="pitch"></canvas>
+                </td>
+                <td align="center">
+                  <canvas id="roll" width="120" height="50" type="lcdGuage" data-nmea2k="navigation.attitude" field-nmea2k="roll"></canvas>
+                </td>
+                <td align="center">
+                  <canvas id="yaw" width="120" height="50" type="lcdGuage" data-nmea2k="navigation.attitude" field-nmea2k="yaw"></canvas>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </section>
+          <section data-background="img/dash.jpg">
+            <table>
+              <tbody>
+              <tr>
+                <td align="center">
+                  <canvas id="mainCabinTemperature" width="120" height="50" type="lcdGuage" data-nmea2k="environment.inside.mainCabin.temperature"></canvas>
+                </td>
+                <td align="center">
+                  <canvas id="bilgeTemperature" width="120" height="50" type="lcdGuage" data-nmea2k="environment.inside.temperature"></canvas>
+                </td>
+                <td align="center">
+                  <canvas id="engineRoomTemperature" width="120" height="50" type="lcdGuage" data-nmea2k="environment.inside.engineRoom.temperature"></canvas>
+                </td>
+              </tr>
+              <tr>
+                <td align="center">
+                  <canvas id="acVoltage" width="120" height="50" type="lcdGuage" data-nmea2k="electrical.ac.1.A.voltage"></canvas>
+                </td>
+                <td align="center">
+                  <canvas id="acCurrent" width="120" height="50" type="lcdGuage" data-nmea2k="electrical.ac.1.A.current"></canvas>
+                </td>
+              </tr>
+              </tbody>
+            </table>
           </section>
         </section>
         <section>
@@ -277,15 +347,15 @@
               <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.5.state"></td>
             </tr>
             <tr>
-              <td><h3>Cabin Heater</h3></td>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.7.state"></td>
+              <td><h3>FM Radio</h3></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.4.4.state"></td>
               <td>&nbsp;</th>
-              <td><h3>Heater</h3></td>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.6.state"></td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
             </tr>
             <tr>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
+              <td><h3>Cabin Heater</h3></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.7.state"></td>
               <td>&nbsp;</th>
               <td><h3>Black water vent</h3></td>
               <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.8.state"></td>

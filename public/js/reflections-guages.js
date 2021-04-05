@@ -2,8 +2,8 @@ function buildGuages() {
 
   var guageLookup = {};
 
-  var getBatteryGuage = function (text, unitString, lcdDecimals) {
-    return {width: 120, height: 50, unitString: unitString, unitStringVisible: true, lcdDecimals: lcdDecimals, headerString: text, headerStringVisible: true};
+  var getLCDGuage = function (text, unitString, lcdDecimals, width=120, height=50) {
+    return {width: width, height: height, unitString: unitString, unitStringVisible: true, lcdDecimals: lcdDecimals, headerString: text, headerStringVisible: true};
   };
 
   var buildEngineGuages = function (guages, side) {
@@ -88,47 +88,112 @@ function buildGuages() {
   };
 
   guageLookup.auxiliaryBattery = {
-    guage: new steelseries.DisplaySingle('auxiliaryBattery', getBatteryGuage('Auxiliary Battery', 'v', 2)),
+    guage: new steelseries.DisplaySingle('auxiliaryBattery', getLCDGuage('Auxiliary Battery', 'v', 2)),
     scale: function(value) {return value;}
   };
 
   guageLookup.portBattery = {
-    guage: new steelseries.DisplaySingle('portBattery', getBatteryGuage('Battery', 'v', 2)),
+    guage: new steelseries.DisplaySingle('portBattery', getLCDGuage('Battery', 'v', 2)),
     scale: function(value) {return value;}
   };
   guageLookup.starboardBattery = {
-    guage: new steelseries.DisplaySingle('starboardBattery', getBatteryGuage('Battery', 'v', 2)),
+    guage: new steelseries.DisplaySingle('starboardBattery', getLCDGuage('Battery', 'v', 2)),
     scale: function(value) {return value;}
   };
 
   guageLookup.portRpm = {
-    guage: new steelseries.DisplaySingle('portRpm', getBatteryGuage('Tachometer', 'rpm', 0)),
+    guage: new steelseries.DisplaySingle('portRpm', getLCDGuage('Tachometer', 'rpm', 0)),
     scale: function(value) {return value*60;}
   };
   guageLookup.starboardRpm = {
-    guage: new steelseries.DisplaySingle('starboardRpm', getBatteryGuage('Tachometer', 'rpm', 0)),
+    guage: new steelseries.DisplaySingle('starboardRpm', getLCDGuage('Tachometer', 'rpm', 0)),
     scale: function(value) {return value*60;}
   };
   guageLookup.portOil = {
-    guage: new steelseries.DisplaySingle('portOil', getBatteryGuage('Oil Pressure','psi', 0)),
+    guage: new steelseries.DisplaySingle('portOil', getLCDGuage('Oil Pressure','psi', 0)),
     scale: function(value) {return value*0.000145038;}
   };
   guageLookup.starboardOil = {
-    guage: new steelseries.DisplaySingle('starboardOil', getBatteryGuage('Oil Pressure','psi', 0)),
+    guage: new steelseries.DisplaySingle('starboardOil', getLCDGuage('Oil Pressure','psi', 0)),
     scale: function(value) {return value*0.000145038;}
   };
   guageLookup.portTemp = {
-    guage: new steelseries.DisplaySingle('portTemp', getBatteryGuage('Temperature', "\xB0C", 0)),
+    guage: new steelseries.DisplaySingle('portTemp', getLCDGuage('Temperature', "\xB0C", 0)),
     scale: function(value) {return value-273.15;}
   };
   guageLookup.starboardTemp = {
-    guage: new steelseries.DisplaySingle('starboardTemp', getBatteryGuage('Temperature', "\xB0C", 0)),
+    guage: new steelseries.DisplaySingle('starboardTemp', getLCDGuage('Temperature', "\xB0C", 0)),
     scale: function(value) {return value-273.15;}
   };
 
   guageLookup.fuel = {
-    guage: new steelseries.DisplaySingle('fuel', getBatteryGuage('Fuel', "L", 0)),
+    guage: new steelseries.DisplaySingle('fuel', getLCDGuage('Fuel', "L", 0)),
     scale: function(value) {return value*1200;}
+  };
+
+  guageLookup.latitude = {
+    guage: new steelseries.DisplaySingle('latitude', getLCDGuage('Latitude', "\xB0", 5, 210, 50)),
+    scale: function(value) {return value;}
+  };
+
+  guageLookup.longitude = {
+    guage: new steelseries.DisplaySingle('longitude', getLCDGuage('Longitude', "\xB0", 5, 210, 50)),
+    scale: function(value) {return value;}
+  };
+
+  guageLookup.heading = {
+    guage: new steelseries.DisplaySingle('heading', getLCDGuage('Heading', "rad", 6, 210, 50)),
+    scale: function(value) {return value;}
+  };
+
+  guageLookup.magneticVariation = {
+    guage: new steelseries.DisplaySingle('magneticVariation', getLCDGuage('Magnetic Variation', "rad", 6, 210, 50)),
+    scale: function(value) {return value;}
+  };
+
+  guageLookup.speed = {
+    guage: new steelseries.DisplaySingle('speed', getLCDGuage('Speed', "km/h", 0)),
+    scale: function(value) {return value*3.6;}
+  };
+
+  guageLookup.pitch = {
+    guage: new steelseries.DisplaySingle('pitch', getLCDGuage('Pitch', "rad", 4)),
+    scale: function(value) {return value*3.6;}
+  };
+
+  guageLookup.roll = {
+    guage: new steelseries.DisplaySingle('roll', getLCDGuage('Roll', "rad", 4)),
+    scale: function(value) {return value*3.6;}
+  };
+
+  guageLookup.yaw = {
+    guage: new steelseries.DisplaySingle('yaw', getLCDGuage('Yaw', "rad", 4)),
+    scale: function(value) {return value*3.6;}
+  };
+
+  guageLookup.mainCabinTemperature = {
+    guage: new steelseries.DisplaySingle('mainCabinTemperature', getLCDGuage('Cabin', "\xB0C", 0)),
+    scale: function(value) {return value-273.15;}
+  };
+
+  guageLookup.bilgeTemperature = {
+    guage: new steelseries.DisplaySingle('bilgeTemperature', getLCDGuage('Bilge', "\xB0C", 0)),
+    scale: function(value) {return value-273.15;}
+  };
+
+  guageLookup.engineRoomTemperature = {
+    guage: new steelseries.DisplaySingle('engineRoomTemperature', getLCDGuage('Engine Room', "\xB0C", 0)),
+    scale: function(value) {return value-273.15;}
+  };
+
+  guageLookup.acVoltage = {
+    guage: new steelseries.DisplaySingle('acVoltage', getLCDGuage('AC Voltage', "v", 0)),
+    scale: function(value) {return value;}
+  };
+
+  guageLookup.acCurrent = {
+    guage: new steelseries.DisplaySingle('acCurrent', getLCDGuage('AC Current', "amp", 0)),
+    scale: function(value) {return value;}
   };
 
   var sections = [steelseries.Section(0, 25, 'rgba(0, 0, 220, 0.3)'),
