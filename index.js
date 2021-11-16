@@ -50,6 +50,10 @@ module.exports = function (app) {
       },
       delta => {
         delta.updates.forEach(u => {
+          // let deltaPath = u.values[0].path;
+          // if ((deltaPath == "propulsion.port.revolutions.values") && (deltaPath == "propulsion.port.revolutions.values.length" > 1)) {
+          //   app.debug(u);
+          // }
           if (u.values[0].path == "electrical.switches.bank.4.3.state") {
             app.debug("lock ");
             app.debug(u);

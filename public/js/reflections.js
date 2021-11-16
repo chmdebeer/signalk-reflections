@@ -58,38 +58,59 @@ function propertiesToArray(obj) {
       })
 
     signalkClient.on('delta', delta => {
+      var pathCache = {};
+
+      var updateElement = function (element, value) {
+        let newValue = value.value;
+        if (element.getAttribute('field-nmea2k')) {
+          newValue = newValue[element.getAttribute('field-nmea2k')];
+         // console.log(newValue);
+        }
+   //     console.log('===' + propertiesToArray(value));
+        switch (element.getAttribute('type')) {
+          case 'checkbox':
+            element.checked = (newValue == 1);
+            break;
+          case 'lcdGuage':
+          case 'radialGuage':
+            if (guagelookup[element.id]) {
+              guagelookup[element.id].guage.setValue(guagelookup[element.id].scale(newValue));
+            }
+            break;
+          case 'momentary':
+            if (newValue == 1) {
+              $(this).addClass('on');
+            } else {
+              $(this).removeClass('on');
+            }
+            break;
+        }
+      }
+
       if ((delta.updates !== undefined) && (delta.updates.length > 0)) {
         delta.updates.forEach(update => {
           // console.log('sources');
           // console.log(update.source.label + '.' + update.source.src);
           update.values.forEach(value => {
-//             console.log(value.path);
-            $('*[data-nmea2k="' + value.path + '"]').each(function(index, element) {
-              let newValue = value.value;
-              if (element.getAttribute('field-nmea2k')) {
-                newValue = newValue[element.getAttribute('field-nmea2k')];
-               // console.log(newValue);
+            if (pathCache[value.path]) {
+              if (pathCache[value.path].elements.length == 0) {
+                continue;
+              } else {
+                pathCache[value.path].value = value;
+                pathCache[value.path].elements.forEach(element => {
+                  updateElement(element, value);
+                }
               }
-         //     console.log('===' + propertiesToArray(value));
-              switch (element.getAttribute('type')) {
-                case 'checkbox':
-                  element.checked = (newValue == 1);
-                  break;
-                case 'lcdGuage':
-                case 'radialGuage':
-                  if (guagelookup[element.id]) {
-                    guagelookup[element.id].guage.setValue(guagelookup[element.id].scale(newValue));
-                  }
-                  break;
-                case 'momentary':
-                  if (newValue == 1) {
-                    $(this).addClass('on');
-                  } else {
-                    $(this).removeClass('on');
-                  }
-                  break;
+            } else {
+              pathCache[value.path] = {
+                elements: [],
+                value: value,
               }
-            });
+              $('*[data-nmea2k="' + value.path + '"]').each(function(index, element) {
+                pathCache[value.path].elements.push(element);
+                updateElement(element, value);
+              });
+            }
           });
         });
       }
