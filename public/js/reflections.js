@@ -1,7 +1,7 @@
 $(function() {
   console.log('init');
 
-  var guagelookup = buildGuages();
+  var guagelookup = buildGauges();
 
 
 function propertiesToArray(obj) {
@@ -35,11 +35,12 @@ function propertiesToArray(obj) {
   });
 
   signalkClient.onData = function (data) {
-    console.log(data);
+    // console.log(data);
   };
 
   signalkClient.on('connect', () => {
     console.log('connected');
+    var pathCache = {};
 
     signalkClient
       .API() // create REST API client
@@ -58,7 +59,8 @@ function propertiesToArray(obj) {
       })
 
     signalkClient.on('delta', delta => {
-      var pathCache = {};
+      let now = new Date();
+      now = now.getTime();
 
       var updateElement = function (element, value) {
         let newValue = value.value;
@@ -94,17 +96,25 @@ function propertiesToArray(obj) {
           update.values.forEach(value => {
             if (pathCache[value.path]) {
               if (pathCache[value.path].elements.length == 0) {
-                continue;
+                // console.log('Skipping ' + value.path);
               } else {
-                pathCache[value.path].value = value;
-                pathCache[value.path].elements.forEach(element => {
-                  updateElement(element, value);
+                if ((now - pathCache[value.path].update) < 500) {
+                  // console.log('Skipping ' + value.path);
+                } else {
+                  pathCache[value.path].update = now;
+                  pathCache[value.path].value = value;
+                  pathCache[value.path].elements.forEach(element => {
+                    // console.log('Cache ' + value.path);
+                    updateElement(element, value);
+                  });
                 }
               }
             } else {
+              // console.log('New Node ' + value.path);
               pathCache[value.path] = {
                 elements: [],
                 value: value,
+                update: now
               }
               $('*[data-nmea2k="' + value.path + '"]').each(function(index, element) {
                 pathCache[value.path].elements.push(element);

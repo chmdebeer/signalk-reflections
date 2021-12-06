@@ -419,7 +419,7 @@ var steelseries = (function () {
         };
 
         var drawTickmarksImage = function (ctx, labelNumberFormat) {
-            var fontSize = Math.ceil(imageWidth * 0.04),
+            var fontSize = Math.ceil((imageWidth < 300) ? imageWidth * 0.06 : imageWidth * 0.04),
                 alpha = rotationOffset,      // Tracks total rotation
                 rotationStep = angleStep * minorTickSpacing,
                 textRotationAngle,
@@ -14416,7 +14416,7 @@ var steelseries = (function () {
         ctx.fillStyle = backgroundColor.labelColor.getRgbaColor();
 
         if (radial) {
-            ctx.font = 0.046728 * imageWidth + 'px ' + stdFontName;
+            ctx.font = (((imageWidth < 300) ? imageWidth * 0.08 : imageWidth * 0.06)) + 'px ' + stdFontName;
             ctx.fillText(titleString, imageWidth / 2, imageHeight * 0.3, imageWidth * 0.3);
             ctx.fillText(unitString, imageWidth / 2, imageHeight * 0.38, imageWidth * 0.3);
         } else {

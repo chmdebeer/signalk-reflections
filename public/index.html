@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="./fonts/fontawesome/css/all.css">
 		<link rel="stylesheet" type="text/css" href="./css/reveal.css">
 		<link rel="stylesheet" type="text/css" href="./css/reflections.css">
+    <link rel="stylesheet" type="text/css" href="./css/reflections-gauges.css">
     <link rel="stylesheet" type="text/css" href="./css/toggle.css">
     <link rel="stylesheet" type="text/css" href="./css/switch.css">
     <link rel="stylesheet" type="text/css" href="./css/radio.css">
@@ -100,155 +101,172 @@
         </section>
         <section>
           <section data-background="img/dash.jpg">
-            <table id="batteries">
-              <tbody>
-              <tr>
-                <td colspan="2" align="center">
-                  <canvas id="portBattery" width="120" height="50" type="lcdGuage" data-nmea2k="electrical.batteries.0.voltage"></canvas>
-                </td>
-                <td colspan="2" align="center">
-                  <canvas id="starboardBattery" width="120" height="50" type="lcdGuage" data-nmea2k="electrical.batteries.1.voltage"></canvas>
-                </td>
-                <td colspan="2" align="center">
-                  <canvas id="auxiliaryBattery" width="120" height="50" type="lcdGuage" data-nmea2k="electrical.batteries.2.voltage"></canvas>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" align="center">
-                  <canvas id="portRpm" width="120" height="50" type="lcdGuage" data-nmea2k="propulsion.port.revolutions"></canvas>
-                </td>
-                <td colspan="2" align="center">
-                  <canvas id="starboardRpm" width="120" height="50" type="lcdGuage" data-nmea2k="propulsion.starboard.revolutions"></canvas>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" align="center">
-                  <canvas id="portOil" width="120" height="50" type="lcdGuage" data-nmea2k="propulsion.port.oilPressure"></canvas>
-                </td>
-                <td colspan="2" align="center">
-                  <canvas id="starboardOil" width="120" height="50" type="lcdGuage" data-nmea2k="propulsion.starboard.oilPressure"></canvas>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" align="center">
-                  <canvas id="portTemp" width="120" height="50" type="lcdGuage" data-nmea2k="propulsion.port.temperature"></canvas>
-                </td>
-                <td colspan="2" align="center">
-                  <canvas id="starboardTemp" width="120" height="50" type="lcdGuage" data-nmea2k="propulsion.starboard.temperature"></canvas>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <h3 align="center" style="margin: 0px">Ignition</h3>
-                  <input type="checkbox" data-nmea2k="electrical.switches.bank.1.1.state">
+            <canvas id="rpm-port-id" type="radialGuage" data-nmea2k="propulsion.port.revolutions"></canvas>
+            <canvas id="volt-port-id" type="radialGuage" data-nmea2k="electrical.batteries.0.voltage"></canvas>
+            <canvas id="oil-pressure-port-id" type="radialGuage" data-nmea2k="propulsion.port.oilPressure"></canvas>
+            <canvas id="water-temp-port-id" type="radialGuage" data-nmea2k="propulsion.port.temperature"></canvas>
+            <div id="engine-port-id">
+              <table>
+                <tr>
+                  <td style="vertical-align:top">
+                    <a href="#" class="fas fa-power-off momentary" type="momentary" data-nmea2k="electrical.switches.bank.1.2.state">&#xF011;</a>
+                  </td>
+                  <td>
+                    <h3 align="center" style="margin: 0px">Ignition</h3>
+                    <input type="checkbox" data-nmea2k="electrical.switches.bank.1.1.state">
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div id="nutrasalt-port-id">
+              <table><tr>
+                <td style="vertical-align:middle">
+                  <h3 align="center" style="margin: 0px">NutraSalt</h3>
                 </td>
                 <td>
-                  <a href="#" class="fas fa-power-off momentary" type="momentary" data-nmea2k="electrical.switches.bank.1.2.state">&#xF011;</a>
-                  <span>Start</span>
+                  <input type="checkbox" data-nmea2k="electrical.switches.bank.1.13.state">
                 </td>
-
+              </tr></table>
+            </div>
+            <div id="port-instrument-id">
+              <table>
+                <tr>
+                  <td style="vertical-align:middle">
+                    <h3 align="center" style="margin: 0px">Blower</h3>
+                  </td>
+                  <td>
+                    <input type="checkbox" data-nmea2k="electrical.switches.bank.3.12.state">
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="border-bottom: 0px; padding: 0px 0px 15px 90px;">
+                    <a href="#" class="fas fa-volume-up momentary" type="momentary" data-nmea2k="electrical.switches.bank.3.1.state">&#xF028;</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border-bottom: 0px; padding: 0px 0px 0px 20px;">
+                    <a href="" class="fas fa-arrow-up momentary" type="momentary" data-nmea2k="electrical.switches.bank.1.6.state" onclick="return false;">&#xF062;</a>
+                  </td>
+                  <td style="border-bottom: 0px; padding: 0px 0px 0px 65px;">
+                    <a href="" class="fas fa-arrow-up momentary" type="momentary" data-nmea2k="electrical.switches.bank.1.8.state" onclick="return false;">&#xF062;</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border-bottom: 0px; padding: 13px 0px 10px 20px;">
+                    <canvas id="trimPort" width="60" height="30" type="lcdGuage" data-nmea2k="environment.inside.mainCabin.temperature"></canvas>
+                  </td>
+                  <td style="border-bottom: 0px; padding: 13px 0px 10px 65px;">
+                    <canvas id="trimStarboard" width="60" height="30" type="lcdGuage" data-nmea2k="environment.inside.mainCabin.temperature"></canvas>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border-bottom: 0px; padding: 0px 0px 0px 20px;">
+                    <a href="" class="fas fa-arrow-down momentary" type="momentary" data-nmea2k="electrical.switches.bank.1.5.state" onclick="return false;">&#xF063;</a>
+                  </td>
+                  <td style="border-bottom: 0px; padding: 0px 0px 0px 65px;">
+                    <a href="" class="fas fa-arrow-down momentary" type="momentary" data-nmea2k="electrical.switches.bank.1.7.state" onclick="return false;">&#xF063;</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" align="center">
+                    <canvas id="fuel-id" type="radialGuage" data-nmea2k="tanks.fuel.1.currentLevel"></canvas>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align:middle">
+                    <h3 align="center" style="margin: 0px">Engine Bilge</h3>
+                  </td>
+                  <td>
+                    <input type="checkbox" data-nmea2k="electrical.switches.bank.3.13.state">
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </section>
+          <section data-background="img/dash.jpg">
+            <canvas id="rpm-starboard-id" type="radialGuage" data-nmea2k="propulsion.starboard.revolutions"></canvas>
+            <canvas id="volt-starboard-id" type="radialGuage" data-nmea2k="electrical.batteries.1.voltage"></canvas>
+            <canvas id="oil-pressure-starboard-id" type="radialGuage" data-nmea2k="propulsion.starboard.oilPressure"></canvas>
+            <canvas id="water-temp-starboard-id" type="radialGuage" data-nmea2k="propulsion.starboard.temperature"></canvas>
+            <div id="engine-starboard-id">
+              <table><tr>
                 <td>
                   <h3 align="center" style="margin: 0px">Ignition</h3>
                   <input type="checkbox" data-nmea2k="electrical.switches.bank.1.3.state">
                 </td>
-                <td>
+                <td style="vertical-align:top">
                   <a href="#" class="fas fa-power-off momentary" type="momentary" data-nmea2k="electrical.switches.bank.1.4.state">&#xF011;</a>
-                  <span>Start</span>
                 </td>
-                <td colspan="2" align="center">
-                  <h3 align="center" style="margin: 0px">Blower</h3>
-                  <input type="checkbox" data-nmea2k="electrical.switches.bank.3.12.state">
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" align="center">
-                  <h3 align="center" style="margin: 0px">NutraSalt</h3>
-                  <input type="checkbox" data-nmea2k="electrical.switches.bank.1.13.state">
-                </td>
-                <td colspan="2" align="center">
-                  <h3 align="center" style="margin: 0px">NutraSalt</h3>
+              </tr></table>
+            </div>
+            <div id="nutrasalt-starboard-id">
+              <table><tr>
+                <td>
                   <input type="checkbox" data-nmea2k="electrical.switches.bank.1.14.state">
                 </td>
-                <td>
-                  <a href="#" class="fas fa-volume-up momentary" type="momentary" data-nmea2k="electrical.switches.bank.3.1.state">&#xF028;</a>
-                  <span>Horn One</span>
+                <td style="vertical-align:middle">
+                  <h3 align="center" style="margin: 0px">NutraSalt</h3>
                 </td>
-                <td>
-                  <a href="#" class="fas fa-volume-up momentary" type="momentary" data-nmea2k="electrical.switches.bank.3.2.state">&#xF028;</a>
-                  <span>Horn Two</span>
-                </td>
-              </tr>
-              <tr>
-              </tr>
-            </tbody>
-            </table>
-          </section>
-          <section data-background="img/dash.jpg">
-            <table>
-              <tr>
-                <td colspan="3" align="center"><h3>Port</h3></td>
-              </tr>
-              <tr>
-                <td colspan="3" align="center"><canvas id="rpm-port-id" type="radialGuage" data-nmea2k="propulsion.port.revolutions"></canvas></td>
-              </tr>
-              <tr>
-                <td><canvas id="volt-port-id" type="radialGuage" data-nmea2k="electrical.batteries.0.voltage"></canvas></td>
-                <td><canvas id="oil-pressure-port-id" type="radialGuage" data-nmea2k="propulsion.port.oilPressure"></canvas></td>
-                <td><canvas id="water-temp-port-id" type="radialGuage" data-nmea2k="propulsion.port.oilPressure"></canvas></td>
-              </tr>
-            </table>
-          </section>
-          <section data-background="img/dash.jpg">
-            <table>
-              <tr>
-                <td colspan="3" align="center"><h3>Starboard</h3></td>
-              </tr>
-              <tr>
-                <td colspan="3" align="center"><canvas id="rpm-starboard-id" type="radialGuage" data-nmea2k="propulsion.starboard.revolutions"></canvas></td>
-              </tr>
-              <tr>
-                <td><canvas id="volt-starboard-id" type="radialGuage" data-nmea2k="electrical.batteries.1.voltage"></canvas></td>
-                <td><canvas id="oil-pressure-starboard-id" type="radialGuage" data-nmea2k="propulsion.starboard.temperature"></canvas></td>
-                <td><canvas id="water-temp-starboard-id" type="radialGuage" data-nmea2k="propulsion.starboard.temperature"></canvas></td>
-              </tr>
-            </table>
+              </tr></table>
+            </div>
+
+            <div id="starboard-instrument-id">
+              <table>
+                <tr>
+                  <td style="vertical-align:middle; border-bottom: 0px">
+                    <h3 align="right" style="margin: 0px">Wiper</h3>
+                  </td>
+                  <td style="border-bottom: 0px">
+                    <input type="checkbox" data-nmea2k="electrical.switches.bank.3.3.state">
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="border-bottom: 0px; padding: 0px 0px 15px 90px;">
+                    <a href="#" class="fas fa-volume-up momentary" type="momentary" data-nmea2k="electrical.switches.bank.3.2.state">&#xF028;</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border-bottom: 0px; padding: 0px 0px 0px 20px;">
+                    <a href="" class="fas fa-arrow-up momentary" type="momentary" data-nmea2k="electrical.switches.bank.1.6.state" onclick="return false;">&#xF062;</a>
+                  </td>
+                  <td style="border-bottom: 0px; padding: 0px 0px 0px 65px;">
+                    <a href="" class="fas fa-arrow-up momentary" type="momentary" data-nmea2k="electrical.switches.bank.1.8.state" onclick="return false;">&#xF062;</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border-bottom: 0px; padding: 13px 0px 10px 20px;">
+                    <canvas id="powerTrimPort" width="60" height="30" type="lcdGuage" data-nmea2k="environment.inside.mainCabin.temperature"></canvas>
+                  </td>
+                  <td style="border-bottom: 0px; padding: 13px 0px 10px 65px;">
+                    <canvas id="powerTrimStarboard" width="60" height="30" type="lcdGuage" data-nmea2k="environment.inside.mainCabin.temperature"></canvas>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border-bottom: 0px; padding: 0px 0px 0px 20px;">
+                    <a href="" class="fas fa-arrow-down momentary" type="momentary" data-nmea2k="electrical.switches.bank.1.5.state" onclick="return false;">&#xF063;</a>
+                  </td>
+                  <td style="border-bottom: 0px; padding: 0px 0px 0px 65px;">
+                    <a href="" class="fas fa-arrow-down momentary" type="momentary" data-nmea2k="electrical.switches.bank.1.7.state" onclick="return false;">&#xF063;</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" align="center" style="border-bottom: 0px">
+                    <canvas id="volt-aux-id" type="radialGuage" data-nmea2k="electrical.batteries.2.voltage"></canvas>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align:middle">
+                    <h3 align="center" style="margin: 0px">Midship<br>Bilge</h3>
+                  </td>
+                  <td>
+                    <input type="checkbox" data-nmea2k="electrical.switches.bank.3.14.state">
+                  </td>
+                </tr>
+              </table>
+            </div>
+
           </section>
 
-          <section data-background="img/dash.jpg">
-            <table>
-              <tbody>
-              <tr>
-                <td colspan="2" align="center">
-                  <canvas id="fuel" width="120" height="50" type="lcdGuage" data-nmea2k="tanks.fuel.1.currentLevel"></canvas>
-                </td>
-              </tr>
-              <tr>
-                <td><h3>Engine Bilge Pump</h3></td>
-                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.13.state"></td>
-              </tr>
-              <tr>
-                <td><h3>Midship Bilge Pump</h3></td>
-                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.3.14.state"></td>
-              </tr>
-              <tr>
-                <td>
-                  <a href="" class="fas fa-arrow-up momentary" type="momentary" data-nmea2k="electrical.switches.bank.1.6.state" onclick="return false;">&#xF062;</a>
-                </td>
-                <td>
-                  <a href="" class="fas fa-arrow-up momentary" type="momentary" data-nmea2k="electrical.switches.bank.1.8.state" onclick="return false;">&#xF062;</a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a href="" class="fas fa-arrow-down momentary" type="momentary" data-nmea2k="electrical.switches.bank.1.5.state" onclick="return false;">&#xF063;</a>
-                </td>
-                <td>
-                  <a href="" class="fas fa-arrow-down momentary" type="momentary" data-nmea2k="electrical.switches.bank.1.7.state" onclick="return false;">&#xF063;</a>
-                </td>
-              </tr>
-            </tbody>
-            </table>
-          </section>
         </section>
         <section>
           <section data-background="img/dash.jpg">
@@ -380,23 +398,35 @@
         </section>
         <section>
           <section data-background="img/dash.jpg">
+            <table style="font-size: 1.0em;">
+              <thead>
+                <td>&nbsp;</td>
+                <td>Port</td>
+                <td>Starboard</td>
+              </thead>
+              <tr>
+                <td>PIN</td>
+                <td>346006</td>
+                <td>338636</td>
+              </tr>
+              <tr>
+                <td>ID</td>
+                <td>2180057</td>
+                <td>21180100</td>
+              </tr>
+              <tr>
+                <td>Serail No</td>
+                <td>23864579</td>
+                <td>23864579</td>
+              </tr>
+            </table>
+          </section>
+          <section data-background="img/dash.jpg">
             <img src="img/raspberry-pi-pinout.png" width="100%">
           </section>
           <section data-background="img/dash.jpg">
             <img src="img/raspberry-pi-pinout-hat.png" width="100%">
           </section>
-        </section>
-        <section data-background="img/dash.jpg">
-          <table>
-            <tr>
-              <td>
-                <div class="led-label">Led description</div>
-              </td>
-              <td>
-                <div class="led-red"></div>
-              </td>
-            </tr>
-          </table>
         </section>
 
 			</div>
@@ -408,14 +438,14 @@
         "./js/signalk.js",
         "./js/gauge.min.js",
         "./js/steelseries.js",
-        "./js/reflections-guages.js",
+        "./js/reflections-gauges.js",
         "./js/joy.js",
         "./js/reflections.js"
       );
     </script>
     <script>
 
-      window.addEventListener("contextmenu", function(e) { e.preventDefault(); })
+      // window.addEventListener("contextmenu", function(e) { e.preventDefault(); })
 
       function toggleFullscreen(elem) {
         elem = elem || document.documentElement;
