@@ -14,8 +14,15 @@
 #volt-port-id{
     position:absolute; top:350px; left:0px;
 }
+#fuel-flow-port-id{
+    position:absolute; top:480px; left:440px;
+}
 #nutrasalt-port-id{
     position:absolute; top:100px; left:55px;
+}
+
+#steering-angle-id{
+    position:absolute; top:420; left:160px;
 }
 
 #engine-starboard-id{
@@ -32,6 +39,9 @@
 }
 #volt-starboard-id{
     position:absolute; top:350px; left:800px;
+}
+#fuel-flow-starboard-id{
+    position:absolute; top:480px; left:440px;
 }
 #nutrasalt-starboard-id{
     position:absolute; top:100px; left:680px;

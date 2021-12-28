@@ -1,7 +1,7 @@
 $(function() {
   console.log('init');
 
-  var guagelookup = buildGauges();
+  var gaugelookup = buildGauges();
 
 
 function propertiesToArray(obj) {
@@ -73,10 +73,10 @@ function propertiesToArray(obj) {
           case 'checkbox':
             element.checked = (newValue == 1);
             break;
-          case 'lcdGuage':
-          case 'radialGuage':
-            if (guagelookup[element.id]) {
-              guagelookup[element.id].guage.setValue(guagelookup[element.id].scale(newValue));
+          case 'lcdGauge':
+          case 'radialGauge':
+            if (gaugelookup[element.id]) {
+              gaugelookup[element.id].gauge.setValue(gaugelookup[element.id].scale(newValue));
             }
             break;
           case 'momentary':
@@ -94,6 +94,9 @@ function propertiesToArray(obj) {
           // console.log('sources');
           // console.log(update.source.label + '.' + update.source.src);
           update.values.forEach(value => {
+            // if (value.path == 'propulsion.starboard.revolutions') {
+            //   console.log('propulsion.starboard.revolutions');
+            // }
             if (pathCache[value.path]) {
               if (pathCache[value.path].elements.length == 0) {
                 // console.log('Skipping ' + value.path);
@@ -130,7 +133,14 @@ function propertiesToArray(obj) {
   signalkClient
     .connect()
     .then(() => {
-      signalkClient.subscribe();
+      signalkClient.subscribe({
+        context: '*', // Get data for all contexts
+        subscribe: [{
+          path: '*', // Get all paths
+          policy: 'instant'
+          // period: 5000 // Every 5000ms
+        }]
+      });
     })
     .catch(err => console.log(err));
 

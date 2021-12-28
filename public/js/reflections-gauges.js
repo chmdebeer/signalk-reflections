@@ -10,6 +10,7 @@ function buildGauges() {
     gauges['rpm-' + side + '-id'] = {
       gauge: new steelseries.Radial('rpm-' + side + '-id', {
         gaugeType: steelseries.GaugeType.TYPE4,
+        pointerType: steelseries.PointerType.TYPE1,
         frameDesign: steelseries.FrameDesign.TILTED_BLACK,
         backgroundColor: steelseries.BackgroundColor.BLACK,
         frameVisible: false,
@@ -29,107 +30,130 @@ function buildGauges() {
     gauges['volt-' + side + '-id'] = {
       gauge: new steelseries.Radial('volt-' + side + '-id', {
         gaugeType: steelseries.GaugeType.TYPE4,
+        pointerType: steelseries.PointerType.TYPE5,
+        pointerColor: steelseries.ColorDef.WHITE,
         frameDesign: steelseries.FrameDesign.TILTED_BLACK,
         backgroundColor: steelseries.BackgroundColor.BLACK,
         frameVisible: false,
         size: 200,
+        freeAreaAngle: 180,
+        rotationOffset: 90,
         // section: sections,
         // area: areas,
-        minValue: 8,
-        maxValue: 16,
+        minValue: 9,
+        maxValue: 15,
         unitString: 'volt',
         thresholdVisible: true,
-        threshold: 10.8,
+        threshold: 11.3,
         thresholdRising: false,
         tickLabelOrientation: steelseries.TickLabelOrientation.HORIZONTAL,
         lcdVisible: true,
-        lcdDecimals: 2}),
-      scale: function(value) {return value*60;}
+        lcdDecimals: 1}),
+      scale: function(value) {return value;}
     };
 
     gauges['oil-pressure-' + side + '-id'] = {
       gauge: new steelseries.Radial('oil-pressure-' + side + '-id', {
         gaugeType: steelseries.GaugeType.TYPE4,
+        pointerType: steelseries.PointerType.TYPE5,
+        pointerColor: steelseries.ColorDef.WHITE,
         frameDesign: steelseries.FrameDesign.TILTED_BLACK,
         backgroundColor: steelseries.BackgroundColor.BLACK,
         frameVisible: false,
         size: 200,
         // section: sections,
         // area: areas,
-        minValue: 8,
-        maxValue: 16,
-        unitString: 'psi',
+        minValue: 300,
+        maxValue: 900,
+        unitString: 'kPa',
         thresholdVisible: true,
-        threshold: 10.8,
+        threshold: 450,
         thresholdRising: false,
         tickLabelOrientation: steelseries.TickLabelOrientation.HORIZONTAL,
         lcdVisible: true,
-        lcdDecimals: 2}),
-      scale: function(value) {return value*60;}
+        lcdDecimals: 0}),
+      scale: function(value) {return value/1000;}
     };
 
     gauges['water-temp-' + side + '-id'] = {
       gauge: new steelseries.Radial('water-temp-' + side + '-id', {
         gaugeType: steelseries.GaugeType.TYPE4,
+        pointerType: steelseries.PointerType.TYPE5,
+        pointerColor: steelseries.ColorDef.WHITE,
         frameDesign: steelseries.FrameDesign.TILTED_BLACK,
         backgroundColor: steelseries.BackgroundColor.BLACK,
         frameVisible: false,
         size: 200,
+        // centerX: 100,
+        // centerY: 100,
         // section: sections,
         // area: areas,
-        minValue: 8,
-        maxValue: 16,
+        minValue: 20,
+        maxValue: 100,
         unitString: "\xB0C",
         thresholdVisible: true,
-        threshold: 10.8,
-        thresholdRising: false,
+        threshold: 85,
+        thresholdRising: true,
         tickLabelOrientation: steelseries.TickLabelOrientation.HORIZONTAL,
         lcdVisible: true,
-        lcdDecimals: 2}),
+        lcdDecimals: 0}),
       scale: function(value) {return value-273.15;}
     };
+
+    gauges['fuel-flow-' + side + '-id'] = {
+      gauge: new steelseries.DisplaySingle('fuel-flow-' + side + '-id', getLCDGauge('Fuel Flow', "l/h", 0)),
+      scale: function(value) {return value * 3600 * 1000;}
+    };
+
+
     return gauges;
   };
 
   gaugeLookup.fuel = {
     gauge: new steelseries.Radial('fuel-id', {
       gaugeType: steelseries.GaugeType.TYPE4,
+      pointerType: steelseries.PointerType.TYPE5,
+      pointerColor: steelseries.ColorDef.WHITE,
       frameDesign: steelseries.FrameDesign.TILTED_BLACK,
       backgroundColor: steelseries.BackgroundColor.BLACK,
       frameVisible: false,
       size: 200,
+      // centerX: 0,
+      // centerY: 100,
       // section: sections,
       // area: areas,
-      minValue: 8,
-      maxValue: 16,
+      minValue: 0,
+      maxValue: 100,
       unitString: "Fuel",
       thresholdVisible: true,
-      threshold: 10.8,
+      threshold: 10,
       thresholdRising: false,
       tickLabelOrientation: steelseries.TickLabelOrientation.HORIZONTAL,
       lcdVisible: true,
-      lcdDecimals: 2}),
+      lcdDecimals: 0}),
     scale: function(value) {return value;}
   };
 
-  gaugeLookup.auxiliaryBattery = {
+  gaugeLookup['volt-aux-id'] = {
     gauge: new steelseries.Radial('volt-aux-id', {
       gaugeType: steelseries.GaugeType.TYPE4,
+      pointerType: steelseries.PointerType.TYPE5,
+      pointerColor: steelseries.ColorDef.WHITE,
       frameDesign: steelseries.FrameDesign.TILTED_BLACK,
       backgroundColor: steelseries.BackgroundColor.BLACK,
       frameVisible: false,
       size: 200,
       // section: sections,
       // area: areas,
-      minValue: 8,
-      maxValue: 16,
+      minValue: 9,
+      maxValue: 15,
       unitString: "volt",
       thresholdVisible: true,
-      threshold: 10.8,
+      threshold: 11.3,
       thresholdRising: false,
       tickLabelOrientation: steelseries.TickLabelOrientation.HORIZONTAL,
       lcdVisible: true,
-      lcdDecimals: 2}),
+      lcdDecimals: 1}),
     scale: function(value) {return value;}
   };
 
@@ -235,11 +259,41 @@ function buildGauges() {
 
   gaugeLookup.powerTrimPort = {
     gauge: new steelseries.DisplaySingle('powerTrimPort', getLCDGauge('', "deg", 0, 70, 30, false)),
-    scale: function(value) {return value;}
+    scale: function(value) {return value*100;}
   };
   gaugeLookup.powerTrimStarboard = {
     gauge: new steelseries.DisplaySingle('powerTrimStarboard', getLCDGauge('', "deg", 0, 70, 30, false)),
-    scale: function(value) {return value;}
+    scale: function(value) {return value*150;}
+  };
+
+  // gaugeLookup.steeringAngle = {
+  //   gauge: new steelseries.DisplaySingle('steeringAngle', getLCDGauge('', "deg", 0, 70, 30, false)),
+  //   scale: function(value) {return ((value / 3.14) * 180);}
+  // };
+  gaugeLookup['steeringAngle'] = {
+    gauge: new steelseries.HalfRadial('steeringAngle', {
+      gaugeType: steelseries.GaugeType.TYPE4,
+      pointerType: steelseries.PointerType.TYPE10,
+      pointerColor: steelseries.ColorDef.WHITE,
+      frameDesign: steelseries.FrameDesign.TILTED_BLACK,
+      backgroundColor: steelseries.BackgroundColor.BLACK,
+      frameVisible: false,
+      size: 200,
+      // centerX: 100,
+      // centerY: 200,
+      // section: sections,
+      // area: areas,
+      minValue: -45,
+      maxValue: 45,
+      unitString: "deg",
+      lcdVisible: false,
+      thresholdVisible: false,
+      threshold: -90,
+      thresholdRising: false,
+      tickLabelOrientation: steelseries.TickLabelOrientation.HORIZONTAL,
+      lcdVisible: true,
+      lcdDecimals: 0}),
+    scale: function(value) {return ((value / 3.14) * -180);}
   };
 
   var sections = [steelseries.Section(0, 25, 'rgba(0, 0, 220, 0.3)'),
@@ -251,6 +305,7 @@ function buildGauges() {
 
   buildEngineGauges(gaugeLookup, 'port');
   buildEngineGauges(gaugeLookup, 'starboard');
+
   return gaugeLookup;
 
 }

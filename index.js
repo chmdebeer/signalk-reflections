@@ -27,20 +27,36 @@ module.exports = function (app) {
     let value = app.getSelfPath('uuid');
     app.debug(`Plugin started for uuid ${value}`);
 
-    for (var b=1; b<5; b++) {
+    for (var b=1; b<11; b++) {
       for (var s=1; s<28; s++) {
         app.registerPutHandler('vessels.' + value, 'electrical.switches.bank.' + b + '.' + s + '.state', putActionHandler);
       }
     }
-    // app.registerPutHandler('vessels.' + value, 'electrical.switches.bank.2.19.state', putActionHandler);
 
     let localSubscription = {
       context: '*', // Get data for all contexts
       subscribe: [{
         path: '*', // Get all paths
-        period: 5000 // Every 5000ms
+        period: 1000 // Every 5000ms
       }]
     };
+
+
+    // app.streambundle
+    //   .getSelfBus('propulsion.port.revolutions')
+    //   .forEach(pos => app.debug(pos));
+
+    // app.registerDeltaInputHandler((delta, next) => {
+    //   delta.updates.forEach(update => {
+    //     update.values.forEach(pathValue => {
+    //       if (pathValue.path.startsWith("propulsion.port.revolutions")) {
+    //         app.debug(pathValue);
+    //       }
+    //     })
+    //   })
+    //   next(delta)
+    // })
+
 
     app.subscriptionmanager.subscribe(
       localSubscription,
@@ -50,13 +66,10 @@ module.exports = function (app) {
       },
       delta => {
         delta.updates.forEach(u => {
-          // let deltaPath = u.values[0].path;
-          // if ((deltaPath == "propulsion.port.revolutions.values") && (deltaPath == "propulsion.port.revolutions.values.length" > 1)) {
-          //   app.debug(u);
-          // }
-          if (u.values[0].path == "electrical.switches.bank.4.3.state") {
-            app.debug("lock ");
-            app.debug(u);
+          app.debug(u.source.pgn);
+          if (u.values[0].path == "propulsion.port.revolutions") {
+            // app.debug();
+            app.debug((u.values[0].value*60) + " " + u.timestamp);
           }
         });
       }
