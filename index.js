@@ -58,22 +58,22 @@ module.exports = function (app) {
     // })
 
 
-    app.subscriptionmanager.subscribe(
-      localSubscription,
-      unsubscribes,
-      subscriptionError => {
-        app.error('Error:' + subscriptionError);
-      },
-      delta => {
-        delta.updates.forEach(u => {
-          app.debug(u.source.pgn);
-          if (u.values[0].path == "propulsion.port.revolutions") {
-            // app.debug();
-            app.debug((u.values[0].value*60) + " " + u.timestamp);
-          }
-        });
-      }
-    );
+    // app.subscriptionmanager.subscribe(
+    //   localSubscription,
+    //   unsubscribes,
+    //   subscriptionError => {
+    //     app.error('Error:' + subscriptionError);
+    //   },
+    //   delta => {
+    //     delta.updates.forEach(u => {
+    //       app.debug(u.source.pgn);
+    //       if (u.values[0].path == "propulsion.port.revolutions") {
+    //         // app.debug();
+    //         app.debug((u.values[0].value*60) + " " + u.timestamp);
+    //       }
+    //     });
+    //   }
+    // );
 
   };
 

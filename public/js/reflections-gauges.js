@@ -109,7 +109,7 @@ function buildGauges() {
     return gauges;
   };
 
-  gaugeLookup.fuel = {
+  gaugeLookup['fuel-id'] = {
     gauge: new steelseries.Radial('fuel-id', {
       gaugeType: steelseries.GaugeType.TYPE4,
       pointerType: steelseries.PointerType.TYPE5,
@@ -131,7 +131,7 @@ function buildGauges() {
       tickLabelOrientation: steelseries.TickLabelOrientation.HORIZONTAL,
       lcdVisible: true,
       lcdDecimals: 0}),
-    scale: function(value) {return value(100);}
+    scale: function(value) {return value*100;}
   };
 
   gaugeLookup['volt-aux-id'] = {

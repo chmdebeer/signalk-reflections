@@ -10,7 +10,7 @@
   "license": "ISC",
   "main": "index.js",
   "name": "signalk-reflections",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "scripts": {
     "build": "npx webpack --config node_modules/signalk-reflections/webpack.config.js"
   },
