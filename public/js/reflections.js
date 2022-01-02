@@ -167,7 +167,7 @@ function propertiesToArray(obj) {
         // console.log(`checkbox: ${onoff}`);
         break;
       case 'momentary':
-        onoff = (event.type == 'mousedown') ? 1 : 0;
+        onoff = ((event.type == 'mousedown') || (event.type == 'touchstart')) ? 1 : 0;
         // console.log(`momentary: ${onoff}`);
         break;
     }
@@ -203,6 +203,8 @@ function propertiesToArray(obj) {
   $('input[type]').on('click', toggleButtonOnClick);
   $(".momentary").on('mousedown', toggleButtonOnClick);
   $(".momentary").on('mouseup', toggleButtonOnClick);
+  $(".momentary").on("touchstart", toggleButtonOnClick);
+  $(".momentary").on("touchend", toggleButtonOnClick);
 
   Reveal.initialize({
     history: true

@@ -24,6 +24,9 @@
 #steering-angle-id{
     position:absolute; top:420; left:160px;
 }
+#speed{
+    position:absolute; top:70; left:700px;
+}
 
 #engine-starboard-id{
     position:absolute; top:0px; left:615px;

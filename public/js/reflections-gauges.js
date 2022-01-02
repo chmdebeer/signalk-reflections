@@ -249,12 +249,12 @@ function buildGauges() {
   };
 
   gaugeLookup.trimPort = {
-    gauge: new steelseries.DisplaySingle('trimPort', getLCDGauge('', "deg", 0, 70, 30, false)),
-    scale: function(value) {return value;}
+    gauge: new steelseries.DisplaySingle('trimPort', getLCDGauge('', "deg", 1, 70, 30, false)),
+    scale: function(value) {return value/10.0;}
   };
   gaugeLookup.trimStarboard = {
-    gauge: new steelseries.DisplaySingle('trimStarboard', getLCDGauge('', "deg", 0, 70, 30, false)),
-    scale: function(value) {return value;}
+    gauge: new steelseries.DisplaySingle('trimStarboard', getLCDGauge('', "deg", 1, 70, 30, false)),
+    scale: function(value) {return value/10.0;}
   };
 
   gaugeLookup.powerTrimPort = {
