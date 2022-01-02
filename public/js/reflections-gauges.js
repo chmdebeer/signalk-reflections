@@ -131,7 +131,7 @@ function buildGauges() {
       tickLabelOrientation: steelseries.TickLabelOrientation.HORIZONTAL,
       lcdVisible: true,
       lcdDecimals: 0}),
-    scale: function(value) {return value;}
+    scale: function(value) {return value(100);}
   };
 
   gaugeLookup['volt-aux-id'] = {
