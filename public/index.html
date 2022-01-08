@@ -56,13 +56,6 @@
               </tr>
               <tr>
                 <td align="center">
-                  <canvas id="speed" width="120" height="50" type="lcdGauge" data-nmea2k="navigation.speedOverGround"></canvas>
-                </td>
-                <td align="center">&nbsp;
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
                   <canvas id="pitch" width="120" height="50" type="lcdGauge" data-nmea2k="navigation.attitude" field-nmea2k="pitch"></canvas>
                 </td>
                 <td align="center">
@@ -108,6 +101,8 @@
             <canvas id="oil-pressure-port-id" type="radialGauge" data-nmea2k="propulsion.port.oilPressure"></canvas>
             <canvas id="water-temp-port-id" type="radialGauge" data-nmea2k="propulsion.port.temperature"></canvas>
             <canvas id="fuel-flow-port-id" width="120" height="50" type="lcdGauge" data-nmea2k="propulsion.port.fuel.rate"></canvas>
+            <canvas id="speed" width="120" height="50" type="lcdGauge" data-nmea2k="navigation.speedOverGround"></canvas>
+            <canvas id="engine-hours-port-id" width="80" height="30" type="odoGauge" data-nmea2k="propulsion.port.runTime"></canvas>
             <div id="engine-port-id">
               <table>
                 <tr>
@@ -192,6 +187,7 @@
             <canvas id="oil-pressure-starboard-id" type="radialGauge" data-nmea2k="propulsion.starboard.oilPressure"></canvas>
             <canvas id="water-temp-starboard-id" type="radialGauge" data-nmea2k="propulsion.starboard.temperature"></canvas>
             <canvas id="fuel-flow-starboard-id" width="120" height="50" type="lcdGauge" data-nmea2k="propulsion.starboard.fuel.rate"></canvas>
+            <canvas id="engine-hours-starboard-id" width="80" height="30" type="odoGauge" data-nmea2k="propulsion.starboard.runTime"></canvas>
             <div id="engine-starboard-id">
               <table><tr>
                 <td>

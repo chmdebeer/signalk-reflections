@@ -74,6 +74,7 @@ function propertiesToArray(obj) {
             element.checked = (newValue == 1);
             break;
           case 'lcdGauge':
+          case 'odoGauge':
           case 'radialGauge':
             if (gaugelookup[element.id]) {
               gaugelookup[element.id].gauge.setValue(gaugelookup[element.id].scale(newValue));

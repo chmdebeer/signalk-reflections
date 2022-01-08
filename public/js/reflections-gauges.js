@@ -105,6 +105,11 @@ function buildGauges() {
       scale: function(value) {return value * 3600 * 1000;}
     };
 
+    gauges['engine-hours-' + side + '-id'] = {
+      gauge: new steelseries.Odometer('engine-hours-' + side + '-id', {digits: 4}),
+      scale: function(value) {return value / 3600;}
+    };
+
 
     return gauges;
   };
