@@ -73,6 +73,13 @@ function propertiesToArray(obj) {
           case 'checkbox':
             element.checked = (newValue == 1);
             break;
+          case 'label':
+            if (newValue == 0) {
+              element.innerHTML = "";
+            } else {
+              element.innerHTML = "&nbsp;" + newValue + " &nbsp;";
+            }
+            break;
           case 'lcdGauge':
           case 'odoGauge':
           case 'radialGauge':

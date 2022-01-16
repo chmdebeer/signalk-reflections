@@ -15,27 +15,27 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-        <section id="music-player" data-background-iframe="" data-background-interactive>
-        </section>
         <section>
-          <section data-background="img/dash.jpg">
+          <section id="clock" data-background="img/dash.jpg">
             <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
           </section>
-          <section data-background="black">
+          <section id="music-player" data-background-iframe="" data-background-interactive>
           </section>
-          <section data-background="img/dash.jpg">
+          <section id="blank" data-background="black">
+          </section>
+          <section id="full-screen" data-background="img/dash.jpg">
             <p>
               <a href="javascript:void(0);" id="btnFullscreen">
               <label>Click the button below to toggle between fullscreen mode and windowed mode for this page.</label>
               </a>
             </p>
           </section>
-          <section data-background="img/dash.jpg">
+          <section id="freeboard" data-background="img/dash.jpg">
             <a href="/@signalk/freeboard-sk/" target="_blank">Freeboard</a>
           </section>
         </section>
         <section>
-          <section data-background="img/dash.jpg">
+          <section id="navigation" data-background="img/dash.jpg">
             <table>
               <tbody>
               <tr>
@@ -68,7 +68,7 @@
               </tbody>
             </table>
           </section>
-          <section data-background="img/dash.jpg">
+          <section id="environment" data-background="img/dash.jpg">
             <table>
               <tbody>
               <tr>
@@ -95,7 +95,7 @@
           </section>
         </section>
         <section>
-          <section data-background="img/dash.jpg">
+          <section id="port" data-background="img/dash.jpg">
             <canvas id="rpm-port-id" type="radialGauge" data-nmea2k="propulsion.port.revolutions"></canvas>
             <canvas id="volt-port-id" type="radialGauge" data-nmea2k="electrical.batteries.0.voltage"></canvas>
             <canvas id="oil-pressure-port-id" type="radialGauge" data-nmea2k="propulsion.port.oilPressure"></canvas>
@@ -107,7 +107,7 @@
               <table>
                 <tr>
                   <td style="vertical-align:top">
-                    <a href="#" class="fas fa-power-off momentary" type="momentary" data-nmea2k="electrical.switches.bank.1.2.state">&#xF011;</a>
+                    <a href="" class="fas fa-power-off momentary" type="momentary" data-nmea2k="electrical.switches.bank.1.2.state" onclick="return false;">&#xF011;</a>
                   </td>
                   <td>
                     <h3 align="center" style="margin: 0px">Ignition</h3>
@@ -119,7 +119,7 @@
             <div id="nutrasalt-port-id">
               <table><tr>
                 <td style="vertical-align:middle">
-                  <h3 align="center" style="margin: 0px">NutraSalt</h3>
+                  <h3 align="center" style="margin: 0px"><label type="label" data-nmea2k="propulsion.port.nutrasaltCountdown"></label>NutraSalt</h3>
                 </td>
                 <td>
                   <input type="checkbox" data-nmea2k="electrical.switches.bank.5.1.state">
@@ -138,7 +138,7 @@
                 </tr>
                 <tr>
                   <td colspan="2" style="border-bottom: 0px; padding: 0px 0px 15px 90px;">
-                    <a href="#" class="fas fa-volume-up momentary" type="momentary" data-nmea2k="electrical.switches.bank.8.1.state">&#xF028;</a>
+                    <a href="" class="fas fa-volume-up momentary" type="momentary" data-nmea2k="electrical.switches.bank.8.1.state" onclick="return false;">&#xF028;</a>
                   </td>
                 </tr>
                 <tr>
@@ -181,7 +181,7 @@
               </table>
             </div>
           </section>
-          <section data-background="img/dash.jpg">
+          <section id="starboard" data-background="img/dash.jpg">
             <canvas id="rpm-starboard-id" type="radialGauge" data-nmea2k="propulsion.starboard.revolutions"></canvas>
             <canvas id="volt-starboard-id" type="radialGauge" data-nmea2k="electrical.batteries.1.voltage"></canvas>
             <canvas id="oil-pressure-starboard-id" type="radialGauge" data-nmea2k="propulsion.starboard.oilPressure"></canvas>
@@ -195,7 +195,7 @@
                   <input type="checkbox" data-nmea2k="electrical.switches.bank.1.3.state">
                 </td>
                 <td style="vertical-align:top">
-                  <a href="#" class="fas fa-power-off momentary" type="momentary" data-nmea2k="electrical.switches.bank.1.4.state">&#xF011;</a>
+                  <a href="" class="fas fa-power-off momentary" type="momentary" data-nmea2k="electrical.switches.bank.1.4.state" onclick="return false;">&#xF011;</a>
                 </td>
               </tr></table>
             </div>
@@ -205,7 +205,7 @@
                   <input type="checkbox" data-nmea2k="electrical.switches.bank.5.2.state">
                 </td>
                 <td style="vertical-align:middle">
-                  <h3 align="center" style="margin: 0px">NutraSalt</h3>
+                  <h3 align="center" style="margin: 0px">NutraSalt<label type="label" data-nmea2k="propulsion.starboard.nutrasaltCountdown"></label></h3>
                 </td>
               </tr></table>
             </div>
@@ -225,7 +225,7 @@
                 </tr>
                 <tr>
                   <td colspan="2" style="border-bottom: 0px; padding: 0px 0px 15px 90px;">
-                    <a href="#" class="fas fa-volume-up momentary" type="momentary" data-nmea2k="electrical.switches.bank.8.2.state">&#xF028;</a>
+                    <a href="" class="fas fa-volume-up momentary" type="momentary" data-nmea2k="electrical.switches.bank.8.2.state" onclick="return false;">&#xF028;</a>
                   </td>
                 </tr>
                 <tr>
@@ -272,7 +272,7 @@
 
         </section>
         <section>
-          <section data-background="img/dash.jpg">
+          <section id="lights" data-background="img/dash.jpg">
             <h1>Lights</h1>
             <table>
               <tr>
@@ -317,7 +317,7 @@
               </tr>
             </table>
           </section>
-          <section data-background="img/dash.jpg">
+          <section id="spotlight" data-background="img/dash.jpg">
             <h1>Spotlight</h1>
             <table>
               <tr>
@@ -354,7 +354,7 @@
             </table>
           </section>
         </section>
-        <section data-background="img/dash.jpg">
+        <section id="utilities" data-background="img/dash.jpg">
           <h1>Utilities</h1>
           <table>
             <tr>
@@ -400,7 +400,7 @@
           </table>
         </section>
         <section>
-          <section data-background="img/dash.jpg">
+          <section id="bluetooth" data-background="img/dash.jpg">
             <table style="font-size: 1.0em;">
               <thead>
                 <td>&nbsp;</td>
@@ -424,7 +424,7 @@
               </tr>
             </table>
           </section>
-          <section data-background="img/dash.jpg">
+          <section id="engine-serial-numbers" data-background="img/dash.jpg">
             <table style="font-size: 1.0em;">
               <thead>
                 <td>&nbsp;</td>
@@ -456,7 +456,7 @@
               </tr>
             </table>
           </section>
-          <section data-background="img/dash.jpg">
+          <section id="transom-serial-numbers" data-background="img/dash.jpg">
             <table style="font-size: 1.0em;">
               <thead>
                 <td>&nbsp;</td>
@@ -483,7 +483,7 @@
               </tr>
             </table>
           </section>
-          <section data-background="img/dash.jpg">
+          <section id="drive-serial-numbers" data-background="img/dash.jpg">
             <table style="font-size: 1.0em;">
               <thead>
                 <td>&nbsp;</td>

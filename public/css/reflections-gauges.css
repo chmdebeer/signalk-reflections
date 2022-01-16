@@ -34,11 +34,11 @@
 }
 
 #engine-starboard-id{
-    position:absolute; top:0px; left:615px;
-    z-index: -1;
+    position:absolute; top:0px; left:615px
 }
 #rpm-starboard-id{
     position:absolute; top:0px; left:250px;
+    z-index: -1;
 }
 #water-temp-starboard-id{
     position:absolute; top:200px; left:700px;
