@@ -1,6 +1,8 @@
 $(function() {
   console.log('init');
 
+  document.getElementById("music-player").setAttribute("data-background-iframe", window.location.protocol + "//" + window.location.hostname + ":8181");
+
   var gaugelookup = buildGauges();
 
 
