@@ -40,6 +40,9 @@
               <tbody>
               <tr>
                 <td align="center">
+                  <canvas id="compass" width="201" height="201" type="lcdGauge" data-nmea2k="navigation.position" field-nmea2k="latitude"></canvas>
+                </td>
+                <td align="center">
                   <canvas id="latitude" width="120" height="50" type="lcdGauge" data-nmea2k="navigation.position" field-nmea2k="latitude"></canvas>
                 </td>
                 <td align="center">
@@ -48,7 +51,11 @@
               </tr>
               <tr>
                 <td align="center">
-                  <canvas id="heading" width="120" height="50" type="lcdGauge" data-nmea2k="navigation.courseOverGroundTrue"></canvas>
+                  <a href="#" id="reset-fuel" class="fas fa-undo-alt momentary" type="momentary" onclick="return false;">&#xF2ea;</a>
+                  <canvas id="fuelUsed" width="120" height="50" type="lcdGauge" data-nmea2k="propulsion.trip.fuelUsed"></canvas>
+                </td>
+                <td align="center">
+                  <canvas id="heading" width="201" height="201" type="compass" data-nmea2k="navigation.courseOverGroundTrue"></canvas>
                 </td>
                 <td align="center">
                   <canvas id="magneticVariation" width="120" height="50" type="lcdGauge" data-nmea2k="navigation.magneticVariation"></canvas>

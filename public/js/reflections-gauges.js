@@ -199,8 +199,14 @@ function buildGauges() {
   };
 
   gaugeLookup.heading = {
-    gauge: new steelseries.DisplaySingle('heading', getLCDGauge('Heading', "rad", 6, 210, 50)),
-    scale: function(value) {return value;}
+    gauge: new steelseries.Compass('heading', {
+      size: 201,
+      frameDesign: steelseries.FrameDesign.TILTED_BLACK,
+      backgroundColor: steelseries.BackgroundColor.BLACK,
+      frameVisible: false,
+      rotateFace: true
+    }),
+    scale: function(value) {return value * (180.0/Math.PI);}
   };
 
   gaugeLookup.magneticVariation = {
@@ -269,6 +275,11 @@ function buildGauges() {
   gaugeLookup.powerTrimStarboard = {
     gauge: new steelseries.DisplaySingle('powerTrimStarboard', getLCDGauge('', "deg", 0, 70, 30, false)),
     scale: function(value) {return value*150;}
+  };
+
+  gaugeLookup.fuelUsed = {
+    gauge: new steelseries.DisplaySingle('fuelUsed', getLCDGauge('Fuel Consumption', "litres", 2, 170, 50, false)),
+    scale: function(value) {return value*1000;}
   };
 
   // gaugeLookup.steeringAngle = {

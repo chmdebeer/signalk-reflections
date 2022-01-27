@@ -1,7 +1,11 @@
 $(function() {
   console.log('init');
 
-  document.getElementById("music-player").setAttribute("data-background-iframe", window.location.protocol + "//" + window.location.hostname + ":8181");
+  var musicplayer = document.getElementById("music-player");
+
+  if (musicplayer) {
+    musicplayer.setAttribute("data-background-iframe", window.location.protocol + "//" + window.location.hostname + ":8181");
+  }
 
   var gaugelookup = buildGauges();
 
@@ -44,6 +48,11 @@ function propertiesToArray(obj) {
     console.log('connected');
     var pathCache = {};
 
+    let fuelUsed = {
+      port: 0,
+      starboard: 0
+    };
+
     signalkClient
       .API() // create REST API client
       .then((api) => api.self())
@@ -82,6 +91,7 @@ function propertiesToArray(obj) {
               element.innerHTML = "&nbsp;" + newValue + " &nbsp;";
             }
             break;
+          case 'compass':
           case 'lcdGauge':
           case 'odoGauge':
           case 'radialGauge':
@@ -104,9 +114,11 @@ function propertiesToArray(obj) {
           // console.log('sources');
           // console.log(update.source.label + '.' + update.source.src);
           update.values.forEach(value => {
-            // if (value.path == 'propulsion.starboard.revolutions') {
-            //   console.log('propulsion.starboard.revolutions');
-            // }
+            if ((value.path == 'propulsion.port.trip.fuelUsed') || (value.path == 'propulsion.starboard.trip.fuelUsed')) {
+              fuelUsed[value.path.split('.')[1]] = value.value;
+              value.path = 'propulsion.trip.fuelUsed';
+              value.value = fuelUsed.port + fuelUsed.starboard;
+            }
             if (pathCache[value.path]) {
               if (pathCache[value.path].elements.length == 0) {
                 // console.log('Skipping ' + value.path);
@@ -210,11 +222,58 @@ function propertiesToArray(obj) {
 
   };
 
+  var resetButtonOnClick = function (event) {
+    // console.log(event);
+    // console.log(event.type);
+    // console.log(this.getAttribute('type'));
+
+    console.log('Reset request');
+
+    if ((event.type == 'mousedown') || (event.type == 'touchstart')) {
+      if (request == undefined) {
+        request = signalkClient.request('PUT');
+      }
+
+      request.body = {
+        updates: [{
+          values: [
+            {
+              path: 'propulsion.port.trip.fuelUsed',
+              value: 0
+            },
+            {
+              path: 'propulsion.starboard.trip.fuelUsed',
+              value: 0
+            }
+          ]
+        }],
+        put: {
+          path: 'propulsion.port.trip.fuelUsed',
+          value: 0
+        }
+      };
+
+      console.log('Sending Reset');
+      request.once('response', response => {
+        console.log('response');
+        console.log(response);
+      })
+
+      request.send()
+    }
+
+  };
+
   $('input[type]').on('click', toggleButtonOnClick);
   $(".momentary").on('mousedown', toggleButtonOnClick);
   $(".momentary").on('mouseup', toggleButtonOnClick);
   $(".momentary").on("touchstart", toggleButtonOnClick);
   $(".momentary").on("touchend", toggleButtonOnClick);
+
+  $("#reset-fuel").on('mousedown', resetButtonOnClick);
+  $("#reset-fuel").on('mouseup', resetButtonOnClick);
+  $("#reset-fuel").on("touchstart", resetButtonOnClick);
+  $("#reset-fuel").on("touchend", resetButtonOnClick);
 
   Reveal.initialize({
     history: true
