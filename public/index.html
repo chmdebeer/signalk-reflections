@@ -21,6 +21,8 @@
           </section>
           <section id="music-player" data-background-iframe="" data-background-interactive>
           </section>
+          <section id="map" data-background-iframe="http://localhost:3000/admin/#/e/_signalk_vesselpositions" data-background-interactive>
+          </section>
           <section id="blank" data-background="black">
           </section>
           <section id="full-screen" data-background="img/dash.jpg">
@@ -39,9 +41,7 @@
             <table>
               <tbody>
               <tr>
-                <td align="center">
-                  <canvas id="compass" width="201" height="201" type="lcdGauge" data-nmea2k="navigation.position" field-nmea2k="latitude"></canvas>
-                </td>
+                <td align="center">&nbsp;</td>
                 <td align="center">
                   <canvas id="latitude" width="120" height="50" type="lcdGauge" data-nmea2k="navigation.position" field-nmea2k="latitude"></canvas>
                 </td>
@@ -50,17 +50,28 @@
                 </td>
               </tr>
               <tr>
+                <td align="center">&nbsp;</td>
+                <td colspan="2" align="center">
+                  <canvas id="heading" width="201" height="201" type="compass" data-nmea2k="navigation.courseOverGroundTrue"></canvas>
+                </td>
+              </tr>
+              <tr>
                 <td align="center">
                   <a href="#" id="reset-fuel" class="fas fa-undo-alt momentary" type="momentary" onclick="return false;">&#xF2ea;</a>
-                  <canvas id="fuelUsed" width="120" height="50" type="lcdGauge" data-nmea2k="propulsion.trip.fuelUsed"></canvas>
                 </td>
                 <td align="center">
-                  <canvas id="heading" width="201" height="201" type="compass" data-nmea2k="navigation.courseOverGroundTrue"></canvas>
+                  <canvas id="fuelUsed" width="120" height="50" type="lcdGauge" data-nmea2k="propulsion.trip.fuelUsed"></canvas>
                 </td>
                 <td align="center">
                   <canvas id="magneticVariation" width="120" height="50" type="lcdGauge" data-nmea2k="navigation.magneticVariation"></canvas>
                 </td>
               </tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="movement" data-background="img/dash.jpg">
+            <table>
+              <tbody>
               <tr>
                 <td align="center">
                   <canvas id="pitch" width="120" height="50" type="lcdGauge" data-nmea2k="navigation.attitude" field-nmea2k="pitch"></canvas>

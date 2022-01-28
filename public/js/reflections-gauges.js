@@ -200,7 +200,7 @@ function buildGauges() {
 
   gaugeLookup.heading = {
     gauge: new steelseries.Compass('heading', {
-      size: 201,
+      size: 400,
       frameDesign: steelseries.FrameDesign.TILTED_BLACK,
       backgroundColor: steelseries.BackgroundColor.BLACK,
       frameVisible: false,
@@ -210,8 +210,8 @@ function buildGauges() {
   };
 
   gaugeLookup.magneticVariation = {
-    gauge: new steelseries.DisplaySingle('magneticVariation', getLCDGauge('Magnetic Variation', "rad", 6, 210, 50)),
-    scale: function(value) {return value;}
+    gauge: new steelseries.DisplaySingle('magneticVariation', getLCDGauge('Magnetic Variation', "\xB0", 1, 170, 50)),
+    scale: function(value) {return  value * (180.0/Math.PI);}
   };
 
   gaugeLookup.speed = {
