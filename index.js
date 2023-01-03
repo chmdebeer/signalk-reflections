@@ -1,4 +1,3 @@
-
 module.exports = function (app) {
   var plugin = {};
   let _timer = null;
@@ -13,7 +12,7 @@ module.exports = function (app) {
   var putActionHandler = function (context, path, value, callback) {
     app.debug(`setting ${path} to ${value}`);
 
-    sendData(path.split('.')[3]);
+    sendSwitchesData(path.split('.')[3]);
 
     if (true) { //doSomething(context, path, value)){
       return { state: 'COMPLETED', statusCode: 200 };
@@ -94,7 +93,7 @@ module.exports = function (app) {
     }
   };
 
-  function sendData(instance) {
+  function sendSwitchesData(instance) {
     const dst = 255;
     const pgn = {
       pgn: 127501,

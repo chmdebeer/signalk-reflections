@@ -1,75 +1,78 @@
 
 #engine-port-id{
-    position:absolute; top:0px; left:135px;
+  position:absolute; top:0px; left:135px;
 }
 #rpm-port-id{
-    position:absolute; top:0px; left:250px;
-    z-index: -1;
+  position:absolute; top:0px; left:250px;
+  z-index: -1;
 }
 #water-temp-port-id{
-    position:absolute; top:200px; left:100px;
+  position:absolute; top:200px; left:100px;
 }
 #oil-pressure-port-id{
-    position:absolute; top:365px; left:180px;
+  position:absolute; top:365px; left:180px;
 }
 #volt-port-id{
-    position:absolute; top:350px; left:0px;
+  position:absolute; top:350px; left:0px;
 }
 #fuel-flow-port-id{
-    position:absolute; top:480px; left:440px;
+  position:absolute; top:480px; left:440px;
 }
 #nutrasalt-port-id{
-    position:absolute; top:100px; left:55px;
+  position:absolute; top:100px; left:55px;
 }
 #engine-hours-port-id{
-    position:absolute; top:400px; left:450px;
-    z-index: 5;
+  position:absolute; top:400px; left:450px;
+  z-index: 5;
 }
 
 #steering-angle-id{
-    position:absolute; top:420; left:160px;
+  position:absolute; top:420; left:160px;
 }
 #speed{
-    position:absolute; top:70; left:700px;
+  position:absolute; top:70; left:700px;
 }
 
 #engine-starboard-id{
-    position:absolute; top:0px; left:615px
+  position:absolute; top:0px; left:615px
 }
 #rpm-starboard-id{
-    position:absolute; top:0px; left:250px;
-    z-index: -1;
+  position:absolute; top:0px; left:250px;
+  z-index: -1;
 }
 #water-temp-starboard-id{
-    position:absolute; top:200px; left:700px;
+  position:absolute; top:200px; left:700px;
 }
 #oil-pressure-starboard-id{
-    position:absolute; top:365px; left:620px;
+  position:absolute; top:365px; left:620px;
 }
 #volt-starboard-id{
-    position:absolute; top:350px; left:800px;
+  position:absolute; top:350px; left:800px;
 }
 #fuel-flow-starboard-id{
-    position:absolute; top:480px; left:440px;
+  position:absolute; top:480px; left:440px;
 }
 #nutrasalt-starboard-id{
-    position:absolute; top:100px; left:680px;
+  position:absolute; top:100px; left:680px;
 }
 #engine-hours-starboard-id{
-    position:absolute; top:400px; left:450px;
-    z-index: 5;
+  position:absolute; top:400px; left:450px;
+  z-index: 5;
+}
+#fuel-economy-id{
+position:absolute; top:70px; left:190px;
 }
 
 #bilge-engine-id{
-    position:absolute; top:550px; left:780px;
+  position:absolute; top:550px; left:780px;
 }
 #bilge-mid-id{
-    position:absolute; top:550px; left:0px;
+  position:absolute; top:550px; left:0px;
 }
 
 #port-instrument-id{
-    position:absolute; top:0px; left:780px;
+  position:absolute; top:0px; left:780px;
 }
 #starboard-instrument-id{
-    position:absolute; top:0px; left:0px;
+  position:absolute; top:0px; left:0px;
 }

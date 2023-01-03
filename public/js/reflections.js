@@ -52,6 +52,13 @@ function propertiesToArray(obj) {
       port: 0,
       starboard: 0
     };
+    let fuelEconomy = {
+      rate: {
+        port: 0,
+        starboard: 0
+      },
+      speed: 0
+    }
 
     signalkClient
       .API() // create REST API client
@@ -109,6 +116,37 @@ function propertiesToArray(obj) {
         }
       }
 
+      var cacheAndUpdate = function (value) {
+        if (pathCache[value.path]) {
+          if (pathCache[value.path].elements.length == 0) {
+            // console.log('Skipping ' + value.path);
+          } else {
+            if ((now - pathCache[value.path].update) < 500) {
+              // console.log('Skipping ' + value.path);
+            } else {
+              pathCache[value.path].update = now;
+              pathCache[value.path].value = value;
+              pathCache[value.path].elements.forEach(element => {
+                // console.log('Cache ' + value.path);
+                updateElement(element, value);
+              });
+            }
+          }
+        } else {
+          // console.log('New Node ' + value.path);
+          pathCache[value.path] = {
+            elements: [],
+            value: value,
+            update: now
+          }
+          $('*[data-nmea2k="' + value.path + '"]').each(function(index, element) {
+            pathCache[value.path].elements.push(element);
+            updateElement(element, value);
+          });
+        }
+      }
+
+
       if ((delta.updates !== undefined) && (delta.updates.length > 0)) {
         delta.updates.forEach(update => {
           // console.log('sources');
@@ -119,33 +157,22 @@ function propertiesToArray(obj) {
               value.path = 'propulsion.trip.fuelUsed';
               value.value = fuelUsed.port + fuelUsed.starboard;
             }
-            if (pathCache[value.path]) {
-              if (pathCache[value.path].elements.length == 0) {
-                // console.log('Skipping ' + value.path);
-              } else {
-                if ((now - pathCache[value.path].update) < 500) {
-                  // console.log('Skipping ' + value.path);
-                } else {
-                  pathCache[value.path].update = now;
-                  pathCache[value.path].value = value;
-                  pathCache[value.path].elements.forEach(element => {
-                    // console.log('Cache ' + value.path);
-                    updateElement(element, value);
-                  });
-                }
-              }
-            } else {
-              // console.log('New Node ' + value.path);
-              pathCache[value.path] = {
-                elements: [],
-                value: value,
-                update: now
-              }
-              $('*[data-nmea2k="' + value.path + '"]').each(function(index, element) {
-                pathCache[value.path].elements.push(element);
-                updateElement(element, value);
-              });
+
+            if ((value.path == 'propulsion.port.fuel.rate') || (value.path == 'propulsion.starboard.fuel.rate')) {
+              fuelEconomy.rate[value.path.split('.')[1]] = value.value;
             }
+            if (value.path == 'navigation.speedOverGround') {
+              fuelEconomy.speed = value.value;
+              if ((fuelEconomy.rate.port + fuelEconomy.rate.starboard) > 0) {
+                let economy = {
+                  path: 'propulsion.fuel.economy',
+                  value: (fuelEconomy.speed * 3.6) / ((fuelEconomy.rate.port + fuelEconomy.rate.starboard) * 3600 * 1000)
+                }
+                cacheAndUpdate(economy);
+              } 
+            }
+
+            cacheAndUpdate(value);
           });
         });
       }

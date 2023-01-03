@@ -282,6 +282,11 @@ function buildGauges() {
     scale: function(value) {return value*1000;}
   };
 
+  gaugeLookup['fuel-economy-id']= {
+    gauge: new steelseries.DisplaySingle('fuel-economy-id', getLCDGauge('Economy', "m/l", 0)),
+    scale: function(value) {return value*1000;}
+  };
+
   // gaugeLookup.steeringAngle = {
   //   gauge: new steelseries.DisplaySingle('steeringAngle', getLCDGauge('', "deg", 0, 70, 30, false)),
   //   scale: function(value) {return ((value / 3.14) * 180);}
