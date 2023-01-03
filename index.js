@@ -1,6 +1,14 @@
 module.exports = function (app) {
   var plugin = {};
   let _timer = null;
+  let thrusterPgn = {
+    pgn: 128006,
+    dst: 255,
+    SID: 11,
+    Instance: 11
+  };
+  thrusterPgn['Power Enabled'] = 'Off';
+  thrusterPgn['Direction Control'] = 'Off'
 
 
   plugin.id = 'signalk-reflections';
@@ -12,7 +20,11 @@ module.exports = function (app) {
   var putActionHandler = function (context, path, value, callback) {
     app.debug(`setting ${path} to ${value}`);
 
-    sendSwitchesData(path.split('.')[3]);
+    if (path.indexOf('steering.thruster') > -1) {
+      sendThrusterData(path, value);
+    } else {
+      sendSwitchesData(path.split('.')[3]);
+    }
 
     if (true) { //doSomething(context, path, value)){
       return { state: 'COMPLETED', statusCode: 200 };
@@ -31,6 +43,8 @@ module.exports = function (app) {
         app.registerPutHandler('vessels.' + value, 'electrical.switches.bank.' + b + '.' + s + '.state', putActionHandler);
       }
     }
+    app.registerPutHandler('vessels.' + value, 'steering.thruster.bow.directionControl', putActionHandler);
+    app.registerPutHandler('vessels.' + value, 'steering.thruster.bow.powerEnabled', putActionHandler);
 
     let localSubscription = {
       context: '*', // Get data for all contexts
@@ -114,6 +128,27 @@ module.exports = function (app) {
       // app.debug('sending update');
       app.emit('nmea2000JsonOut', pgn)
     }
+  }
+
+  function sendThrusterData(path, value) {
+    if (path == 'steering.thruster.bow.powerEnabled') {
+      thrusterPgn['Power Enabled'] = value == 1 ? 'On' : 'Off';
+    } else if (path == 'steering.thruster.bow.directionControl') {
+      if (thrusterPgn['Power Enabled'] == 'On') {
+        switch (value) {
+          case 0: thrusterPgn['Direction Control'] = 'Off'; break;
+          case 2: thrusterPgn['Direction Control'] = 'To Port'; break;
+          case 3: thrusterPgn['Direction Control'] = 'To Starboard'; break;
+        }
+      } else {
+        thrusterPgn['Direction Control'] = 'Off';
+      }
+    }
+    
+
+    // app.debug('sending %j', thrusterPgn)
+    // app.debug('sending update');
+    app.emit('nmea2000JsonOut', thrusterPgn)
   }
 
   return plugin;

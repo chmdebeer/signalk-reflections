@@ -199,6 +199,8 @@ function propertiesToArray(obj) {
     // console.log(this.getAttribute('type'));
 
     var nmea2kField = this.getAttribute('data-nmea2k');
+    var elementClass = this.getAttribute('class');
+
     if (!nmea2kField) {
       console.log('No nmea mapping');
       return;
@@ -217,6 +219,13 @@ function propertiesToArray(obj) {
         break;
       case 'momentary':
         onoff = ((event.type == 'mousedown') || (event.type == 'touchstart')) ? 1 : 0;
+        if (onoff && (nmea2kField == 'steering.thruster.bow.directionControl')) {
+          if (elementClass.indexOf('left') > -1) {
+            onoff = 2;
+          } else if (elementClass.indexOf('right') > -1) {
+            onoff = 3;
+          }
+        }
         // console.log(`momentary: ${onoff}`);
         break;
     }
@@ -241,8 +250,8 @@ function propertiesToArray(obj) {
     };
 
     request.once('response', response => {
-      console.log('response');
-      console.log(response);
+      // console.log('response');
+      // console.log(response);
     })
 
     request.send()
