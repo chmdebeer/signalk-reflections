@@ -200,7 +200,7 @@ function buildGauges() {
 
   gaugeLookup.heading = {
     gauge: new steelseries.Compass('heading', {
-      size: 400,
+      size: 350,
       frameDesign: steelseries.FrameDesign.TILTED_BLACK,
       backgroundColor: steelseries.BackgroundColor.BLACK,
       frameVisible: false,
@@ -220,18 +220,18 @@ function buildGauges() {
   };
 
   gaugeLookup.pitch = {
-    gauge: new steelseries.DisplaySingle('pitch', getLCDGauge('Pitch', "rad", 4)),
-    scale: function(value) {return value*3.6;}
+    gauge: new steelseries.DisplaySingle('pitch', getLCDGauge('Pitch', "deg", 0)),
+    scale: function(value) {return value * (180.0/Math.PI);}
   };
 
   gaugeLookup.roll = {
-    gauge: new steelseries.DisplaySingle('roll', getLCDGauge('Roll', "rad", 4)),
-    scale: function(value) {return value*3.6;}
+    gauge: new steelseries.DisplaySingle('roll', getLCDGauge('Roll', "deg", 0)),
+    scale: function(value) {return value * (180.0/Math.PI);}
   };
 
   gaugeLookup.yaw = {
-    gauge: new steelseries.DisplaySingle('yaw', getLCDGauge('Yaw', "rad", 4)),
-    scale: function(value) {return value*3.6;}
+    gauge: new steelseries.DisplaySingle('yaw', getLCDGauge('Yaw', "deg", 0)),
+    scale: function(value) {return value * (180.0/Math.PI);}
   };
 
   gaugeLookup.mainCabinTemperature = {
