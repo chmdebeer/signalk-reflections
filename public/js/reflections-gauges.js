@@ -219,6 +219,16 @@ function buildGauges() {
     scale: function(value) {return value*3.6;}
   };
 
+  gaugeLookup['water-speed'] = {
+    gauge: new steelseries.DisplaySingle('water-speed', getLCDGauge('Speed', "km/h", 0)),
+    scale: function(value) {return value*3.6;}
+  };
+
+  gaugeLookup.depth = {
+    gauge: new steelseries.DisplaySingle('depth', getLCDGauge('depth', "m", 0)),
+    scale: function(value) {return value*3.6;}
+  };
+
   gaugeLookup.pitch = {
     gauge: new steelseries.DisplaySingle('pitch', getLCDGauge('Pitch', "deg", 0)),
     scale: function(value) {return value * (180.0/Math.PI);}

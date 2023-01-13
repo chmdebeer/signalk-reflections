@@ -129,6 +129,8 @@
             <canvas id="fuel-flow-port-id" width="120" height="50" type="lcdGauge" data-nmea2k="propulsion.port.fuel.rate"></canvas>
             <canvas id="speed" width="120" height="50" type="lcdGauge" data-nmea2k="navigation.speedOverGround"></canvas>
             <canvas id="engine-hours-port-id" width="80" height="30" type="odoGauge" data-nmea2k="propulsion.port.runTime"></canvas>
+            <canvas id="depth" width="120" height="50" type="lcdGauge" data-nmea2k="water.depth"></canvas>
+            <canvas id="fuel-economy-id" width="120" height="50" type="lcdGauge" data-nmea2k="propulsion.fuel.economy"></canvas>
             <div id="engine-port-id">
               <table>
                 <tr>
@@ -215,6 +217,7 @@
             <canvas id="fuel-flow-starboard-id" width="120" height="50" type="lcdGauge" data-nmea2k="propulsion.starboard.fuel.rate"></canvas>
             <canvas id="engine-hours-starboard-id" width="80" height="30" type="odoGauge" data-nmea2k="propulsion.starboard.runTime"></canvas>
             <canvas id="fuel-economy-id" width="120" height="50" type="lcdGauge" data-nmea2k="propulsion.fuel.economy"></canvas>
+            <canvas id="water-speed" width="120" height="50" type="lcdGauge" data-nmea2k="navigation.waterspeed"></canvas>
             <div id="engine-starboard-id">
               <table><tr>
                 <td>
@@ -308,36 +311,36 @@
                 <th colspan="2" align="center"><h2>Exterior</h2></th>
               </tr>
               <tr>
-                <td><h3>Instrument</h3></td>
-                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.1.state"></td>
+                <td><h2>Cabin</h2></td>
+                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.2.state"></td>
                 <td>&nbsp;</td>
                 <td><h3>Navigation</h3></td>
                 <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.9.state"></td>
               </tr>
               <tr>
-                <td><h2>Cabin</h2></td>
-                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.2.state"></td>
+                <td><h2>Bathroom</h2></td>
+                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.4.state"></td>
                 <td>&nbsp;</td>
                 <td><h3>Anchor</h3></td>
                 <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.8.state"></td>
               </tr>
               <tr>
-                <td><h2>Bathroom</h2></td>
-                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.4.state"></td>
+                <td><h2>Berth</h2></td>
+                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.3.state"></td>
                 <td>&nbsp;</td>
                 <td><h3>Aft Deck</h3></td>
                 <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.5.state"></td>
               </tr>
               <tr>
-                <td><h2>Berth</h2></td>
-                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.3.state"></td>
+                <td><h2>Below Deck</h2></td>
+                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.6.state"></td>
                 <td>&nbsp;</td>
                 <td><h3>Sternlight</h3></td>
                 <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.10.state"></td>
               </tr>
               <tr>
-                <td><h2>Below Deck</h2></td>
-                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.6.state"></td>
+                <td><h3>Instrument</h3></td>
+                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.1.state"></td>
                 <td>&nbsp;</td>
                 <td><h3>Engine Room</h3></td>
                 <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.7.state"></td>
@@ -414,15 +417,15 @@
               <td><h3>Refrigerator</h3></td>
               <td><input type="checkbox" data-nmea2k="electrical.switches.bank.9.4.state"></td>
               <td>&nbsp;</th>
-              <td><h3>Macerator</h3></td>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.9.2.state"></td>
+              <td><h3>Shower Drain</h3></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.9.3.state"></td>
             </tr>
             <tr>
               <td><h3>Door Lock</h3></td>
               <td><input type="checkbox" data-nmea2k="electrical.switches.bank.10.3.state"></td>
               <td>&nbsp;</th>
-              <td><h3>Shower Drain</h3></td>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.9.3.state"></td>
+              <td><h3>Macerator</h3></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.9.2.state"></td>
             </tr>
           </table>
         </section>

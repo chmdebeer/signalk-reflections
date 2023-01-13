@@ -60,7 +60,13 @@
   z-index: 5;
 }
 #fuel-economy-id{
-position:absolute; top:70px; left:190px;
+  position:absolute; top:480px; left:600px;
+}
+#water-speed{
+  position:absolute; top:70px; left:190px;
+}
+#depth{
+  position:absolute; top:390px; left:680px;
 }
 
 #bilge-engine-id{
