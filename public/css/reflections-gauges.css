@@ -1,4 +1,11 @@
 
+#depth-sounder-id{
+  position:absolute; top:550px; left:135px;
+}
+#depth{
+  position:absolute; top:555px; left:440px;
+}
+
 #engine-port-id{
   position:absolute; top:0px; left:135px;
 }
@@ -64,9 +71,6 @@
 }
 #water-speed{
   position:absolute; top:70px; left:190px;
-}
-#depth{
-  position:absolute; top:390px; left:680px;
 }
 
 #bilge-engine-id{
