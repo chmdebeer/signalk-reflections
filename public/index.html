@@ -121,6 +121,134 @@
             </table>
         </section>
         <section>
+          <section id="lights" data-background="img/dash.jpg">
+            <h1>Lights</h1>
+            <table>
+              <tr>
+                <th colspan="2" align="center"><h2>Interior</h2></th>
+                <th style="width:80px">&nbsp;</th>
+                <th colspan="2" align="center"><h2>Exterior</h2></th>
+              </tr>
+              <tr>
+                <td><h2>Cabin</h2></td>
+                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.2.state"></td>
+                <td>&nbsp;</td>
+                <td><h3>Navigation</h3></td>
+                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.9.state"></td>
+              </tr>
+              <tr>
+                <td><h2>Bathroom</h2></td>
+                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.4.state"></td>
+                <td>&nbsp;</td>
+                <td><h3>Anchor</h3></td>
+                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.8.state"></td>
+              </tr>
+              <tr>
+                <td><h2>Berth</h2></td>
+                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.3.state"></td>
+                <td>&nbsp;</td>
+                <td><h3>Aft Deck</h3></td>
+                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.5.state"></td>
+              </tr>
+              <tr>
+                <td><h2>Below Deck</h2></td>
+                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.6.state"></td>
+                <td>&nbsp;</td>
+                <td><h3>Sternlight</h3></td>
+                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.10.state"></td>
+              </tr>
+              <tr>
+                <td><h3>Instrument</h3></td>
+                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.1.state"></td>
+                <td>&nbsp;</td>
+                <td><h3>Engine Room</h3></td>
+                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.7.state"></td>
+              </tr>
+            </table>
+          </section>
+          <section id="spotlight" data-background="img/dash.jpg">
+            <h1>Spotlight</h1>
+            <table>
+              <tr>
+                <td colspan="2"><h3>Fog</h3></td>
+                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.7.1.state"></td>
+              </tr>
+              <tr>
+                <td colspan="2"><h3>Spot</h3></td>
+                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.7.2.state"></td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>
+                  <a href="" class="fas fa-arrow-up momentary" type="momentary" data-nmea2k="electrical.switches.bank.7.3.state" onclick="return false;">&#xF062;</a>
+                </td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="" class="fas fa-arrow-left momentary" type="momentary" data-nmea2k="electrical.switches.bank.7.6.state" onclick="return false;">&#xF060;</a>
+                </td>
+                <td>&nbsp;</td>
+                <td>
+                  <a href="" class="fas fa-arrow-right momentary" type="momentary" data-nmea2k="electrical.switches.bank.7.5.state" onclick="return false;">&#xF061;</a>
+                </td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>
+                  <a href="" class="fas fa-arrow-down momentary" type="momentary" data-nmea2k="electrical.switches.bank.7.4.state" onclick="return false;">&#xF063;</a>
+                </td>
+                <td>&nbsp;</td>
+              </tr>
+            </table>
+          </section>
+        </section>
+        <section id="utilities" data-background="img/dash.jpg">
+          <h1>Utilities</h1>
+          <table>
+            <tr>
+              <th colspan="2" align="center"><h2>Wipers</h2></th>
+              <th style="width:80px">&nbsp;</th>
+              <th colspan="2" align="center"><h2>Water</h2></th>
+            </tr>
+            <tr>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.8.3.state"></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.8.4.state"></td>
+              <td>&nbsp;</th>
+              <td><h3>Pressure</h3></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.10.1.state"></td>
+            </tr>
+            <tr>
+              <td><h3>FM Radio</h3></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.8.6.state"></td>
+              <td>&nbsp;</th>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td><h3>Cabin Heater</h3></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.8.5.state"></td>
+              <td>&nbsp;</th>
+              <td><h3>Black water vent</h3></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.9.1.state"></td>
+            </tr>
+            <tr>
+              <td><h3>Refrigerator</h3></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.9.4.state"></td>
+              <td>&nbsp;</th>
+              <td><h3>Shower Drain</h3></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.9.3.state"></td>
+            </tr>
+            <tr>
+              <td><h3>Door Lock</h3></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.10.3.state"></td>
+              <td>&nbsp;</th>
+              <td><h3>Macerator</h3></td>
+              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.9.2.state"></td>
+            </tr>
+          </table>
+        </section>
+        <section>
           <section id="port" data-background="img/dash.jpg">
             <canvas id="rpm-port-id" type="radialGauge" data-nmea2k="propulsion.port.revolutions"></canvas>
             <canvas id="volt-port-id" type="radialGauge" data-nmea2k="electrical.batteries.0.voltage"></canvas>
@@ -310,134 +438,6 @@
 
           </section>
 
-        </section>
-        <section>
-          <section id="lights" data-background="img/dash.jpg">
-            <h1>Lights</h1>
-            <table>
-              <tr>
-                <th colspan="2" align="center"><h2>Interior</h2></th>
-                <th style="width:80px">&nbsp;</th>
-                <th colspan="2" align="center"><h2>Exterior</h2></th>
-              </tr>
-              <tr>
-                <td><h2>Cabin</h2></td>
-                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.2.state"></td>
-                <td>&nbsp;</td>
-                <td><h3>Navigation</h3></td>
-                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.9.state"></td>
-              </tr>
-              <tr>
-                <td><h2>Bathroom</h2></td>
-                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.4.state"></td>
-                <td>&nbsp;</td>
-                <td><h3>Anchor</h3></td>
-                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.8.state"></td>
-              </tr>
-              <tr>
-                <td><h2>Berth</h2></td>
-                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.3.state"></td>
-                <td>&nbsp;</td>
-                <td><h3>Aft Deck</h3></td>
-                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.5.state"></td>
-              </tr>
-              <tr>
-                <td><h2>Below Deck</h2></td>
-                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.6.state"></td>
-                <td>&nbsp;</td>
-                <td><h3>Sternlight</h3></td>
-                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.10.state"></td>
-              </tr>
-              <tr>
-                <td><h3>Instrument</h3></td>
-                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.1.state"></td>
-                <td>&nbsp;</td>
-                <td><h3>Engine Room</h3></td>
-                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.6.7.state"></td>
-              </tr>
-            </table>
-          </section>
-          <section id="spotlight" data-background="img/dash.jpg">
-            <h1>Spotlight</h1>
-            <table>
-              <tr>
-                <td colspan="2"><h3>Fog</h3></td>
-                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.7.1.state"></td>
-              </tr>
-              <tr>
-                <td colspan="2"><h3>Spot</h3></td>
-                <td><input type="checkbox" data-nmea2k="electrical.switches.bank.7.2.state"></td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>
-                  <a href="" class="fas fa-arrow-up momentary" type="momentary" data-nmea2k="electrical.switches.bank.7.3.state" onclick="return false;">&#xF062;</a>
-                </td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>
-                  <a href="" class="fas fa-arrow-left momentary" type="momentary" data-nmea2k="electrical.switches.bank.7.6.state" onclick="return false;">&#xF060;</a>
-                </td>
-                <td>&nbsp;</td>
-                <td>
-                  <a href="" class="fas fa-arrow-right momentary" type="momentary" data-nmea2k="electrical.switches.bank.7.5.state" onclick="return false;">&#xF061;</a>
-                </td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>
-                  <a href="" class="fas fa-arrow-down momentary" type="momentary" data-nmea2k="electrical.switches.bank.7.4.state" onclick="return false;">&#xF063;</a>
-                </td>
-                <td>&nbsp;</td>
-              </tr>
-            </table>
-          </section>
-        </section>
-        <section id="utilities" data-background="img/dash.jpg">
-          <h1>Utilities</h1>
-          <table>
-            <tr>
-              <th colspan="2" align="center"><h2>Wipers</h2></th>
-              <th style="width:80px">&nbsp;</th>
-              <th colspan="2" align="center"><h2>Water</h2></th>
-            </tr>
-            <tr>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.8.3.state"></td>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.8.4.state"></td>
-              <td>&nbsp;</th>
-              <td><h3>Pressure</h3></td>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.10.1.state"></td>
-            </tr>
-            <tr>
-              <td><h3>FM Radio</h3></td>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.8.6.state"></td>
-              <td>&nbsp;</th>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
-            </tr>
-            <tr>
-              <td><h3>Cabin Heater</h3></td>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.8.5.state"></td>
-              <td>&nbsp;</th>
-              <td><h3>Black water vent</h3></td>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.9.1.state"></td>
-            </tr>
-            <tr>
-              <td><h3>Refrigerator</h3></td>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.9.4.state"></td>
-              <td>&nbsp;</th>
-              <td><h3>Shower Drain</h3></td>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.9.3.state"></td>
-            </tr>
-            <tr>
-              <td><h3>Door Lock</h3></td>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.10.3.state"></td>
-              <td>&nbsp;</th>
-              <td><h3>Macerator</h3></td>
-              <td><input type="checkbox" data-nmea2k="electrical.switches.bank.9.2.state"></td>
-            </tr>
-          </table>
         </section>
         <section>
           <section id="bluetooth" data-background="img/dash.jpg">
