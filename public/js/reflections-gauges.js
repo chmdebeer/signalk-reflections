@@ -226,7 +226,7 @@ function buildGauges() {
 
   gaugeLookup.depth = {
     gauge: new steelseries.DisplaySingle('depth', getLCDGauge('depth', "m", 0)),
-    scale: function(value) {return value*3.6;}
+    scale: function(value) {return value;}
   };
 
   gaugeLookup.pitch = {
